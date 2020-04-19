@@ -1,3 +1,6 @@
+import { ChatComponent } from './pages/chat/chat.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { BuscadorComponent } from './pages/buscador/buscador.component';
 import { ItemComponent } from './pages/item/item.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -11,6 +14,9 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'item/:id', component: ItemComponent},
   {path: 'buscar/:termino', component: BuscadorComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'chat', component: ChatComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 

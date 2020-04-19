@@ -1,3 +1,10 @@
+
+
+<div *ngIf="productoServices.productoFiltrado.length === 0" class="text-center">
+  <div class="alert alert-danger" role="alert">Lo sentimos no existen productos con el termino {{termino}}</div>
+</div>
+
+
 <div *ngIf="productoServices.productoFiltrado.length > 0"
     class="ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
         <a [routerLink]="['/item', producto.cod]" class="rk-item ae-masonry__item" *ngFor="let producto of productoServices.productoFiltrado">

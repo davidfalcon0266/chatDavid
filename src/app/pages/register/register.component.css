@@ -1,0 +1,27 @@
+.register {
+    width: 100%;
+    height: 100vh;
+}
+   
+
+.fondoPrincipal {
+    position: absolute;
+    background-image: url(./../../../assets/img/fondoreg.jpg);
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.example-full-width{
+    width: 50%;
+}
+
+.altura {
+    min-width: 100%;
+    min-height: 100% !important;
+}
+
+.material-icons {
+    font-size: 1.8em !important;
+}

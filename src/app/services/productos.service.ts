@@ -30,7 +30,7 @@ export class ProductosService {
   }
 
   obtenerProducto(idProducto: string) {
-   return this.http.get(this.urlProducto + `${idProducto}` + '.json' );
+    return this.http.get(this.urlProducto + `${idProducto}` + '.json' );
   }
 
   buscarProducto(termino: string) {

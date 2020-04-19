@@ -1,0 +1,90 @@
+<div class="principal animated fadeIn">
+    <div class="row">
+        <div class="col-6 animated fadeInLeft delay-1s">
+            <div class="justify-content-center mt-5">
+                <h4 class="text-center mt-5 text-dark">Registrate <br> <span class="material-icons mt-3 text-center text-primary iconsize-80">
+                    account_box
+                    </span></h4>
+                
+                <form [formGroup]="formG" class="mt-5 text-center">
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="text-dark">Nombre</mat-label>
+                        <input matInput id="name" class="text-dark f-w" name="name" formControlName="name" required
+                            pattern="[a-zA-Z ]*" appOnlyChar onpaste="return" false>
+                        <mat-error
+                            *ngIf="formG.controls.name.errors && formG.controls.name.errors.required && (formG.controls.name.dirty || formG.controls.name.touched)">
+                            Campo Requerido</mat-error>
+                        <mat-error
+                            *ngIf="formG.controls.name.errors && formG.controls.name.errors.pattern && (formG.controls.name.dirty || formG.controls.name.touched)">
+                            No se permiten Numeros</mat-error>
+                    </mat-form-field> <br>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="text-dark">Apellido</mat-label>
+                        <input matInput id="lastName" class="text-dark f-w" name="name" formControlName="lastName"
+                            required pattern="[a-zA-Z ]*">
+                        <mat-error
+                            *ngIf="formG.controls.lastName.errors && formG.controls.lastName.errors.required && (formG.controls.lastName.dirty || formG.controls.lastName.touched)">
+                            Campo Requerido</mat-error>
+                        <mat-error
+                            *ngIf="formG.controls.lastName.errors && formG.controls.lastName.errors.pattern && (formG.controls.lastName.dirty || formG.controls.lastName.touched)">
+                            No se permiten Numeros</mat-error>
+                    </mat-form-field> <br>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="text-dark">Correo</mat-label>
+                        <input matInput id="correo" class="text-warning f-w" name="correo" formControlName="correo"
+                            type="email"
+                            pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                            required>
+                        <mat-error
+                            *ngIf="formG.controls.correo.errors && formG.controls.correo.errors.required && (formG.controls.correo.dirty || formG.controls.correo.touched)">
+                            Campo Requerido</mat-error>
+                        <mat-error
+                            *ngIf="formG.controls.correo.errors && formG.controls.correo.errors.pattern && (formG.controls.correo.dirty || formG.controls.correo.touched)">
+                            Debe introducir una direccion e correo valida</mat-error>
+                    </mat-form-field> <br>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="text-dark">Password</mat-label>
+                        <input matInput id="pws" class="text-dark f-w" name="pws" type="password" formControlName="pws"
+                            required>
+                        <mat-error
+                            *ngIf="formG.controls.pws.errors && formG.controls.pws.errors.required && (formG.controls.pws.dirty || formG.controls.pws.touched)">
+                            Campo Requerido</mat-error>
+                        <mat-error
+                            *ngIf="formG.controls?.pws?.errors && formG.controls?.pws?.errors.minlength && (formG.controls?.pws?.dirty || formG.controls?.pws?.touched)">
+                            Minimo 5 caracteres</mat-error>
+                    </mat-form-field>
+                    <small *ngIf="password" class="form-text text-danger">Las contraseñas no coinciden</small> <br>
+                    <mat-form-field class="example-full-width">
+                        <mat-label class="text-dark">Repite Password</mat-label>
+                        <input matInput id="pws2" class="text-dark f-w" name="pws2" type="password"
+                            formControlName="pws2" required>
+                        <mat-error
+                            *ngIf="formG.controls.pws2.errors && formG.controls.pws2.errors.required && (formG.controls.pws2.dirty || formG.controls.pws2.touched)">
+                            Campo Requerido</mat-error>
+                        <mat-error
+                            *ngIf="formG.controls?.pws2?.errors && formG.controls?.pws2?.errors.minlength && (formG.controls?.pws2?.dirty || formG.controls?.pws2?.touched)">
+                            Minimo 5 caracteres</mat-error>
+                    </mat-form-field>
+                    <small *ngIf="password" class="form-text text-danger">Las contraseñas no coinciden</small> <br>
+
+                    <button mat-raised-button class="btn-block example-full-width" color="primary"
+                        routerLink="/register" [disabled]="!formG.valid" (click)="validarUser()">Registrar</button> <br>
+                   <a routerLink="/login" class="text-primary mt-2">Ya tienes cuenta?. Inicia Sesión</a>
+                        
+
+                </form>
+
+            </div>
+          
+        </div>
+        <div class="col-6 animated fadeInLeft delay-1s">
+            <div class="fondoPrincipal"></div>
+        </div>
+    </div>
+    <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
+    </ngx-loading> -->
+</div>
+

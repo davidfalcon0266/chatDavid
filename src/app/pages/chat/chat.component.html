@@ -1,0 +1,23 @@
+<div class="chat-window">
+    <h1>
+
+        Chat</h1>
+
+    <hr>
+    <div class="app-mensajes" id="app-mensaje">
+        <div *ngIf="servi.persona.uid">
+            <div *ngFor="let chat of servi.chats" [ngClass]="{'text-right': servi.persona.uid == chat.uid }">
+                <span class="badge" [ngClass]="{'badge-primary': servi.persona.uid == chat.uid,
+                       'badge-success': servi.persona.uid != chat.uid }">{{chat.nombre}}</span>
+                <p>{{chat.mensaje}}</p>
+            </div>
+        </div>
+
+        <div *ngIf="!servi.persona.uid">
+        <a [routerLink]="['/login']" class="alert alert-danger puntero" role="alert">Inicia sesión..</a>
+    </div>
+    </div>
+
+    <input [disabled]="!servi.persona.uid" class="btn btn-light d-block form-control text-left mb-2" name="mensaje" type="text" [(ngModel)]="mensaje"
+        placeholder="Enviar Mensaje" (keyup.enter)="postMensaje()">
+</div>

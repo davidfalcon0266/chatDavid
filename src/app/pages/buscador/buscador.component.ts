@@ -8,13 +8,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./buscador.component.css']
 })
 export class BuscadorComponent implements OnInit {
-
+  termino: string;
   constructor(private router: ActivatedRoute,
               private productoServices: ProductosService) { }
 
   ngOnInit() {
     this.router.params.subscribe(params => {
       console.log(params['termino']);
+      this.termino = params['termino'];
       this.productoServices.buscarProducto(params['termino']);
     });
   }

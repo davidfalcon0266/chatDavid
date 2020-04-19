@@ -1,0 +1,69 @@
+<div class="" *ngIf="!servi.persona.uid">
+    <div class="principal animated fadeIn">
+        <div class="row">
+            <div class="col-6 animated fadeInLeft delay-1s">
+                <div class="login"></div>
+            </div>
+            <div class="col-6 animated fadeInLeft delay-1s">
+                <div class="justify-content-center">
+
+                    <h4 class="text-center text-primary iconsize-80">
+                        <mat-icon> account_circle </mat-icon>
+                    </h4>
+                    <form [formGroup]="formG" class=" text-center">
+
+                        <mat-form-field class="example-full-width mt-5 w-50">
+                            <mat-label class="text-dark">Correo</mat-label>
+                            <input matInput id="correo" class="text-warning f-w" name="correo" formControlName="correo"
+                                type="email"
+                                pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                                required>
+                            <mat-error
+                                *ngIf="formG.controls.correo.errors && formG.controls.correo.errors.required && (formG.controls.correo.dirty || formG.controls.correo.touched)">
+                                Campo Requerido</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls.correo.errors && formG.controls.correo.errors.pattern && (formG.controls.correo.dirty || formG.controls.correo.touched)">
+                                Debe introducir una direccion e correo valida</mat-error>
+
+                        </mat-form-field> <br>
+
+                        <mat-form-field class="example-full-width  w-50">
+                            <mat-label class="text-dark">Password</mat-label>
+                            <input matInput id="pws" class="text-dark f-w" name="pws" type="password"
+                                formControlName="pws" required>
+                            <mat-error
+                                *ngIf="formG.controls?.pws?.errors && formG.controls?.pws?.errors.required && (formG.controls?.pws?.dirty || formG.controls?.pws?.touched)">
+                                Campo Requerido</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls?.pws?.errors && formG.controls?.pws?.errors.minlength && (formG.controls?.pws?.dirty || formG.controls?.pws?.touched)">
+                                Minimo 5 caracteres</mat-error>
+                        </mat-form-field> <br>
+                        <button class="btn btn-outline-primary w-50 m-2" (click)="autentica('google')">Entra con
+                            google</button> <br>
+
+
+                        <button mat-raised-button class="w-50" color="primary" [disabled]="!formG.valid" type="button"
+                            (click)="onSubmit()">Entrar</button>
+                        <div>
+                            <a routerLink="/register" class="text-primary">
+                                ¿No tienes cuenta? Registrate
+                            </a>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
+    </ngx-loading> -->
+    </div>
+</div>
+
+<div align="center">
+    <div class="row col-12">
+        <div class="" *ngIf="servi.persona.uid">
+            <button mat-raised-button class="w-100" color="primary" (click)="servi.logout()">Salir</button>
+        </div>
+    </div>
+</div>
