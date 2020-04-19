@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   usuario: Usuario = new Usuario('', '', '');
 
 
-  constructor(private formB: FormBuilder,
-              private auth: AuthService,
+  constructor(public formB: FormBuilder,
+              public auth: AuthService,
               public servi: ChatService
              ) { }
 

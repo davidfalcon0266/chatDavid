@@ -13,11 +13,12 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit {
   formG: FormGroup;
   public loading = false;
+  public password = false;
   usuario: Usuario = new Usuario('', '', '');
 
-  constructor(private formB: FormBuilder,
-              private router: Router,
-              private auth: AuthService
+  constructor(public formB: FormBuilder,
+              public router: Router,
+              public auth: AuthService
   ) {
   }
 

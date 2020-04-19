@@ -11,20 +11,19 @@ export class InfoPaginaService {
 
   info: InfoPagina = {};
   cargada = false;
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
    this.cargarInfo();
   }
 
-  cargarInfo() {
-    this.http.get('assets/data/data-pagina.json').subscribe((data: InfoPagina) => {
+ public cargarInfo() {
+  return  this.http.get('assets/data/data-pagina.json').subscribe((data: InfoPagina) => {
       this.info = data;
       this.cargada = true;
-      console.log(this.info);
-
+      return this.info;
     });
   }
 
-  cargarEquipo() {
+  public cargarEquipo() {
    return this.http.get(this.urlEquipo);
   }
 

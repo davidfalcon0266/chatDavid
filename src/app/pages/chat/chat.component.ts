@@ -13,7 +13,7 @@ export class ChatComponent implements OnInit {
 
   // esta variable la llenamos desde el html mediante el input
    mensaje: any = '';
-    constructor(private servi: ChatService) {
+    constructor(public servi: ChatService) {
     // para mostrar los mensajes que tenemos en la base de bd
     this.servi.cargarMensajes().subscribe(() => {
 

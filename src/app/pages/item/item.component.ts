@@ -13,8 +13,8 @@ export class ItemComponent implements OnInit {
   producto: ProductoDescripcion;
   id: string;
 
-  constructor(private route: ActivatedRoute,
-              private productoServices: ProductosService) { }
+  constructor(public route: ActivatedRoute,
+              public productoServices: ProductosService) { }
 
   ngOnInit() {
 

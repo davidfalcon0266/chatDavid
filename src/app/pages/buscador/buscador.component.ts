@@ -9,8 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BuscadorComponent implements OnInit {
   termino: string;
-  constructor(private router: ActivatedRoute,
-              private productoServices: ProductosService) { }
+  constructor(public router: ActivatedRoute,
+              public productoServices: ProductosService) { }
 
   ngOnInit() {
     this.router.params.subscribe(params => {

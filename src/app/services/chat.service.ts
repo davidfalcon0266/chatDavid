@@ -24,17 +24,17 @@ export class ChatService {
 
 
 
-   private itemsCollection: AngularFirestoreCollection<Mensajes>;
+   public itemsCollection: AngularFirestoreCollection<Mensajes>;
    public persona: any = [{
      nombre: '',
      uid: ''
    }];
-   private chats: Mensajes[] = [];
+   public chats: Mensajes[] = [];
                                                 // para autentificarnos
-  constructor(private afs: AngularFirestore,
+  constructor(public afs: AngularFirestore,
               public afAuth: AngularFireAuth,
-              private http: HttpClient,
-              private router: Router
+              public http: HttpClient,
+              public router: Router
     ) {
 // con esto recibimos e usuraio que hemos registrado
     this.afAuth.authState.subscribe( user => {

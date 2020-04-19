@@ -13,7 +13,7 @@ export class ProductosService {
   urlProductos = 'https://angular-html-570d3.firebaseio.com/productos_idx.json';
   urlProducto = 'https://angular-html-570d3.firebaseio.com/productos/';
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
     this.cargarProductos();
   }
 
