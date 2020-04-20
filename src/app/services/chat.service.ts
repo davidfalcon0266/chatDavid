@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class ChatService {
 
   url = 'https://identitytoolkit.googleapis.com/v1/accounts:';
-  apiKey = 'AIzaSyA9ceMo04OQxb9tHKH16VNKhwpKHgyVOmg';
+  apiKey = '';
 
 
 
