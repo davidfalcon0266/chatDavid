@@ -14,3 +14,9 @@ h4 {
 .material-icons {
     font-size: 2.5em;
 }
+
+@media (max-width: 992px) {
+    .login
+    {
+display: none;   }
+}
