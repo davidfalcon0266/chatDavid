@@ -4,15 +4,15 @@
             <div class="col-6 animated fadeInLeft delay-1s">
                 <div class="login"></div>
             </div>
-            <div class="col-6 animated fadeInLeft delay-1s">
+            <div class="col-lg-6 col-sm-12 animated fadeInLeft delay-1s">
                 <div class="justify-content-center">
 
                     <h4 class="text-center text-primary iconsize-80">
                         <mat-icon> account_circle </mat-icon>
                     </h4>
-                    <form [formGroup]="formG" class=" text-center">
+                    <form [formGroup]="formG" class=" text-center m-5">
 
-                        <mat-form-field class="example-full-width mt-5 w-50">
+                        <mat-form-field class="example-full-width mt-5 w-100">
                             <mat-label class="text-dark">Correo</mat-label>
                             <input matInput id="correo" class="text-warning f-w" name="correo" formControlName="correo"
                                 type="email"
@@ -27,7 +27,7 @@
 
                         </mat-form-field> <br>
 
-                        <mat-form-field class="example-full-width  w-50">
+                        <mat-form-field class="example-full-width  w-100">
                             <mat-label class="text-dark">Password</mat-label>
                             <input matInput id="pws" class="text-dark f-w" name="pws" type="password"
                                 formControlName="pws" required>
@@ -38,12 +38,12 @@
                                 *ngIf="formG.controls?.pws?.errors && formG.controls?.pws?.errors.minlength && (formG.controls?.pws?.dirty || formG.controls?.pws?.touched)">
                                 Minimo 5 caracteres</mat-error>
                         </mat-form-field> <br>
-                        <button class="btn btn-outline-primary w-50 m-2" (click)="autentica('google')">Entra con
-                            google</button> <br>
-
-
+                       
                         <button mat-raised-button class="w-50" color="primary" [disabled]="!formG.valid" type="button"
-                            (click)="onSubmit()">Entrar</button>
+                            (click)="onSubmit()">Entrar</button> <br>
+
+                            <button class="btn btn-outline-primary w-50 m-2" (click)="autentica('google')">Entra con
+                                google</button> 
                         <div>
                             <a routerLink="/register" class="text-primary">
                                 ¿No tienes cuenta? Registrate
