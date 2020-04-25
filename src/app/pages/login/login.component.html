@@ -1,18 +1,20 @@
-<div class="" *ngIf="!servi.persona.uid">
+<div class="">
     <div class="principal animated fadeIn">
         <div class="row">
-            <div class="col-6 animated fadeInLeft delay-1s">
+            <div class="col-6 mt-5">
+                <div class="animated slideInRight delay-1s">
                 <div class="login"></div>
+                </div>
             </div>
-            <div class="col-lg-6 col-sm-12 animated fadeInLeft delay-1s">
-                <div class="justify-content-center">
+            <div class="col-lg-6 col-sm-12 mt-5">
+                <div class="justify-content-center animated slideInLeft delay-1s">
 
                     <h4 class="text-center text-primary iconsize-80">
                         <mat-icon> account_circle </mat-icon>
                     </h4>
-                    <form [formGroup]="formG" class=" text-center m-5">
+                    <form [formGroup]="formG" class=" text-center mx-5">
 
-                        <mat-form-field class="example-full-width mt-5 w-100">
+                        <mat-form-field class="example-full-width">
                             <mat-label class="text-dark">Correo</mat-label>
                             <input matInput id="correo" class="text-warning f-w" name="correo" formControlName="correo"
                                 type="email"
@@ -27,7 +29,7 @@
 
                         </mat-form-field> <br>
 
-                        <mat-form-field class="example-full-width  w-100">
+                        <mat-form-field class="example-full-width">
                             <mat-label class="text-dark">Password</mat-label>
                             <input matInput id="pws" class="text-dark f-w" name="pws" type="password"
                                 formControlName="pws" required>
@@ -38,16 +40,15 @@
                                 *ngIf="formG.controls?.pws?.errors && formG.controls?.pws?.errors.minlength && (formG.controls?.pws?.dirty || formG.controls?.pws?.touched)">
                                 Minimo 5 caracteres</mat-error>
                         </mat-form-field> <br>
-                       
-                        <button mat-raised-button class="w-50" color="primary" [disabled]="!formG.valid" type="button"
-                            (click)="onSubmit()">Entrar</button> <br>
 
-                            <button class="btn btn-outline-primary w-50 m-2" (click)="autentica('google')">Entra con
-                                google</button> 
-                        <div>
-                            <a routerLink="/register" class="text-primary">
+                        <div class="mt-5">
+                            <button mat-raised-button class="w-50" color="primary" [disabled]="!formG.valid"
+                                type="button" (click)="onSubmit()">Entrar</button> <br>
+
+                            <a routerLink="/register" class="text-primary mt-5">
                                 ¿No tienes cuenta? Registrate
-                            </a>
+                            </a> <br>
+                            <a (click)="abrirModal()" class="text-primary cursor">Olvidaste tu contraseña?</a>
                         </div>
                     </form>
 
@@ -55,15 +56,10 @@
                 </div>
             </div>
         </div>
-        <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
-    </ngx-loading> -->
     </div>
 </div>
 
-<div align="center">
-    <div class="row col-12">
-        <div class="" *ngIf="servi.persona.uid">
-            <button mat-raised-button class="w-100" color="primary" (click)="servi.logout()">Salir</button>
-        </div>
-    </div>
-</div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
+</ngx-loading>
+<ngx-loading [show]="servi.loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
+</ngx-loading>

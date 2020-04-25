@@ -1,11 +1,12 @@
-<div class="principal animated fadeIn">
+<div class="principal animated slower delay-2s">
     <div class="row">
-        <div class="col-6 animated fadeInLeft delay-1s">
-            <div class="justify-content-center mt-5">
-                <h4 class="text-center mt-5 text-dark">Registrate <br> <span class="material-icons mt-3 text-center text-primary iconsize-80">
-                    account_box
+        <div class="col-lg-6 col-sm-12 animated fadeInLeft delay-1s">
+            <div class="justify-content-center mt-5 animated slideInRight delay-1s">
+                <h4 class="text-center mt-5 text-dark">Registrate <br> <span
+                        class="material-icons mt-3 text-center text-primary iconsize-80">
+                        account_box
                     </span></h4>
-                
+
                 <form [formGroup]="formG" class="mt-5 text-center">
                     <mat-form-field class="example-full-width">
                         <mat-label class="text-dark">Nombre</mat-label>
@@ -71,20 +72,22 @@
                     <small *ngIf="password" class="form-text text-danger">Las contraseñas no coinciden</small> <br>
 
                     <button mat-raised-button class="btn-block example-full-width" color="primary"
-                        routerLink="/register" [disabled]="!formG.valid" (click)="validarUser()">Registrar</button> <br>
-                   <a routerLink="/login" class="text-primary mt-2">Ya tienes cuenta?. Inicia Sesión</a>
-                        
+                        routerLink="/register" [disabled]="!formG.valid" (click)="registrar()">Registrar</button> <br>
+                    <a routerLink="/login" class="text-primary mt-2">Ya tienes cuenta?. Inicia Sesión</a>
+
 
                 </form>
 
             </div>
-          
+
         </div>
-        <div class="col-6 animated fadeInLeft delay-1s">
-            <div class="fondoPrincipal"></div>
+        <div class="col-6">
+            <div class="animated slideInLeft delay-1s">
+                <div class="fondoPrincipal"></div>
+            </div>
         </div>
     </div>
-    <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
-    </ngx-loading> -->
-</div>
 
+</div>
+<ngx-loading [show]="authServi.loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
+</ngx-loading>

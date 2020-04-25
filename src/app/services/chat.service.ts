@@ -1,11 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Usuario } from './../models/usuarios.model';
 import { Mensajes } from './../interfaces/mensajes';
 import { Injectable } from '@angular/core';
 // esto lo traemos d la documentacion de angularfire..de la parte de coleccion
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import {map} from 'rxjs/operators';
-
+import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import Swal from 'sweetalert2';
@@ -17,84 +16,112 @@ import { Router } from '@angular/router';
 })
 export class ChatService {
 
-  url = 'https://identitytoolkit.googleapis.com/v1/accounts:';
-  apiKey = 'AIzaSyA9ceMo04OQxb9tHKH16VNKhwpKHgyVOmg';
-
-
-
-
-
-   public itemsCollection: AngularFirestoreCollection<Mensajes>;
-   public persona: any = [{
-     nombre: '',
-     uid: ''
-   }];
-   public chats: Mensajes[] = [];
-                                                // para autentificarnos
+  public loading: boolean;
+  public userLogg: boolean;
+  public itemsCollection: AngularFirestoreCollection<Mensajes>;
+  public persona: any = [{
+    nombre: '',
+    uid: ''
+  }];
+  public chats: Mensajes[] = [];
+  public confirmoSalida: boolean;
   constructor(public afs: AngularFirestore,
               public afAuth: AngularFireAuth,
               public http: HttpClient,
               public router: Router
-    ) {
-// con esto recibimos e usuraio que hemos registrado
-    this.afAuth.authState.subscribe( user => {
-     if (!user) {
-            console.log('no hay usuario');
-            return;
-       }
-     this.persona.nombre = user.displayName;
-     this.persona.uid = user.uid;
-   });
-
-  }
-
-  loginLocal(usuario: Usuario ) {
-    const user = {
-      email: usuario.correo,
-      password: usuario.password,
-      returnSecureToken: true
-    };
-
-    return this.http.post(`${this.url}signInWithPassword?key=${this.apiKey}`, user).subscribe((data: any) => {
-      this.persona.nombre = data.email;
-      this.persona.uid = data.localId;
-      Swal.fire({
-          icon: 'success',
-          title: 'Bienvenido',
-          text: data.message,
-        });
-      this.router.navigateByUrl('/chat');
-      return;
+  ) {
+    // con esto recibimos e usuraio que hemos registrado
+    this.afAuth.authState.subscribe(user => {
+      console.log(user);
+      if (!user) {
+        this.userLogg = false;
+        return;
+      }
+      this.userLogg = true;
+      this.persona.nombre = user.email;
+      this.persona.uid = user.uid;
     }, error => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: error.error.error.message,
-      });
-      return;
+      console.log(error);
     });
   }
 
-  register(usuario: Usuario) {
-
-  const user = {
-    email: usuario.correo,
-    password: usuario.password,
-    returnSecureToken: true
-  };
-
-  const headers = { headers: new HttpHeaders({ 'Content-type': 'application/json' })};
-  return this.http.post(`${this.url}signUp?key=${this.apiKey}`, user, headers);
+  loginGoogle() {
+    return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
-
-
-  login(proveedor: string) {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  login(mail: string, password: string) {
+    return this.afAuth.auth.signInWithEmailAndPassword(mail, password);
   }
+
+  restablecerPassword(mail: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(mail);
+  }
+
+  public register(mail: string, password: string): Promise<void> {
+    this.loading = true;
+    return this.afAuth.auth.createUserWithEmailAndPassword(mail, password).then(async (user) => {
+      this.loading = false;
+      console.log(user);
+      await this.mandarCorreo();
+      await this.afAuth.auth.signOut();
+
+    }).catch(error => {
+      this.loading = false;
+      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: error.code,
+        text: 'Por favor verifique',
+      });
+    });
+  }
+
+  mandarCorreo() {
+    this.loading = true;
+    return this.afAuth.auth.currentUser.sendEmailVerification().then
+      ((user: any ) => {
+        this.loading = false;
+        this.logout();
+        Swal.fire({
+          icon: 'success',
+          title: 'Le enviamos un correo de verificación..!',
+          text: 'Por favor confirme..!',
+        });
+        this.router.navigateByUrl('/login');
+      }).catch(error => {
+        this.loading = false;
+        this.logout();
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error de servicio',
+          text: 'Intentelo mas tarde',
+        });
+      });
+  }
+
   logout() {
-    this.persona = [];
-    this.afAuth.auth.signOut();
+    this.confirmarSalida();
+    }
+
+  confirmarSalida() {
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'Seguro desea cerrar sesión?..',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+    }).then((result) => {
+      if (result.value) {
+        this.persona = [];
+        this.afAuth.auth.signOut();
+        localStorage.clear();
+        this.router.navigateByUrl('/home');
+        console.log('fuera');
+      }
+    });
   }
 
   cargarMensajes() {
@@ -116,7 +143,6 @@ export class ChatService {
 
   GuardarMensajes(text: string) {
     const mensaje: Mensajes = {
-
       nombre: this.persona.nombre,
       mensaje: text,
       fecha: new Date().getTime(),
@@ -124,5 +150,9 @@ export class ChatService {
     };
     // post message a bd
     return this.itemsCollection.add(mensaje);
+  }
+
+  saveStorage(uid: string) {
+    localStorage.setItem('user', JSON.stringify(uid));
   }
 }

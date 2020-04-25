@@ -1,0 +1,36 @@
+.navbar-nav {
+    margin-top: 10px;
+    text-align: center !important;
+    color: #000000;
+}
+
+.active {
+    color: blue !important;
+    font-weight: bold;
+    border-bottom: 3px solid blue;
+    padding: 3px 20px;    
+}
+@media (max-width: 992px) {
+    .active
+    {
+        width: 30% !important;
+        margin: 0 auto;
+  }
+}
+
+.form-inline {
+    text-align: center !important;
+}
+
+.puntero {
+    cursor: pointer;
+}
+
+.navbar-brand {
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.borde {
+    border: 2px solid blue;
+}

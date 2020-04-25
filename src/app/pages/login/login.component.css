@@ -1,5 +1,5 @@
 .login {
-    background-image: url(./../../../assets/img/fondoreg.jpg);
+    background-image: url(./../../../assets/img/fondolo.jpg);
     width: 100%;
     height: 100vh !important;
     background-position: center;
@@ -9,6 +9,7 @@
 }
 h4 {
     color: rgb(136, 4, 136);
+    margin-right: 25px;
 }
 
 .material-icons {
@@ -19,4 +20,12 @@ h4 {
     .login
     {
 display: none;   }
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.example-full-width {
+    width: 70% !important;
 }

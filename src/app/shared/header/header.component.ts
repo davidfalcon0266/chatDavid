@@ -1,3 +1,4 @@
+import { ChatService } from './../../services/chat.service';
 import { InfoPaginaService } from './../../services/info-pagina.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(public infoService: InfoPaginaService,
-              public router: Router) { }
+              public router: Router,
+              public chatServ: ChatService) { }
 
   ngOnInit() {
   }
