@@ -28,11 +28,9 @@ export class HeaderComponent implements OnInit {
     }
 
     this.router.navigate(['/buscar', termino]);
-
   }
 
   ocultarMenu() {
-
     if ( innerWidth < 992) {
     if (this.desplegable === true) {
         this.desplegable = false;
