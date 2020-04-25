@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ocultarMenu() {
-
     if ( innerWidth < 992) {
     if (this.desplegable === true) {
         this.desplegable = false;
