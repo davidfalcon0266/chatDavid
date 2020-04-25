@@ -104,7 +104,7 @@ messageSuccess() {
   Swal.fire({
     icon: 'success',
     title: 'Bienvenido',
-    text: 'sc',
+    text: 'Ahora podras unirte al chat..!',
     timer: 2000,
   });
 }
