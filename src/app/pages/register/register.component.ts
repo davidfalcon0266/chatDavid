@@ -1,6 +1,7 @@
+import { ChatService } from './../../services/chat.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, MinLengthValidator } from '@angular/forms';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import {Usuario} from '../../../app/models/usuarios.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,10 +16,10 @@ export class RegisterComponent implements OnInit {
   public loading = false;
   public password = false;
   usuario: Usuario = new Usuario('', '', '');
-
   constructor(public formB: FormBuilder,
               public router: Router,
-              public auth: AuthService
+              public auth: AuthService,
+              public authServi: ChatService
   ) {
   }
 
@@ -37,15 +38,36 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  validarUser() {
+  registrar() {
+   this.validarPassword();
+   if (this.password) {
+      return;
+   }
+   this.loading = true;
    this.usuario.correo = this.formG.value.correo;
    this.usuario.password = this.formG.value.pws;
-   this.auth.register(this.usuario).subscribe(data => {
-     console.log(data);
-   }, error => {
-     console.log(error.error.error.message);
-   });
+   this.authServi.register(this.usuario.correo, this.usuario.password);
+  }
+
+   validarPassword() {
+    this.password = false;
+    const pws1 = this.formG.value.pws;
+    const pws2 = this.formG.value.pws2;
+
+    if (pws1 !== pws2) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Las contraseñas no coinciden',
+        text: 'Intentalo de nuevo',
+      });
+      this.password = true;
+      console.log('no consinciden');
+    } else {
+      this.password = false;
+      console.log('son iguales');
     }
+  }
+
 
 
 

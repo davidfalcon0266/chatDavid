@@ -25,6 +25,9 @@ export class ProductosService {
       this.productos = data;
       this.loading = false;
       resolve();
+    }, error => {
+      this.loading = false;
+      console.log(error);
     });
    });
   }

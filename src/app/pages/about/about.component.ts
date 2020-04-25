@@ -1,4 +1,3 @@
-import { Equipo } from './../../interfaces/info-equipo';
 import { InfoPaginaService } from './../../services/info-pagina.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-
+  loading: boolean;
   equipos: [] = [];
   constructor(public infoService: InfoPaginaService) {
-
+    this.loading = true;
     this.infoService.cargarEquipo().subscribe((data: []) => {
+      this.loading = false;
       this.equipos = data;
+    }, error => {
+      this.loading = false;
+      console.log(error);
     });
   }
 

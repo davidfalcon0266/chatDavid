@@ -1,3 +1,4 @@
+import { ChatService } from './services/chat.service';
 import { ProductosService } from './services/productos.service';
 import { InfoPaginaService } from './services/info-pagina.service';
 import { Component } from '@angular/core';
@@ -14,7 +15,8 @@ export class AppComponent {
 
   constructor(public infoService: InfoPaginaService,
               public productoServi: ProductosService,
-              public db: AngularFirestore) {
+              public db: AngularFirestore,
+              public chatServi: ChatService) {
 
                 this.chats = db.collection('chats').valueChanges();
 

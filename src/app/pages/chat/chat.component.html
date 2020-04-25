@@ -1,9 +1,10 @@
+<div class=" row col-12 justify-content-center">
 <div class="chat-window">
-    <h1>
+    <h1 class="text-center">
 
         Chat</h1>
 
-    <hr>
+    <hr class="borde">
     <div class="app-mensajes" id="app-mensaje">
         <div *ngIf="servi.persona.uid">
             <div *ngFor="let chat of servi.chats" [ngClass]="{'text-right': servi.persona.uid == chat.uid }">
@@ -13,11 +14,21 @@
             </div>
         </div>
 
-        <div *ngIf="!servi.persona.uid">
-        <a [routerLink]="['/login']" class="alert alert-danger puntero" role="alert">Inicia sesión..</a>
     </div>
+<div class="d-flex">
+    <div class="escribir">
+    <input [disabled]="!servi.persona.uid" class="btn btn-light d-block form-control text-left mb-2" name="mensaje"
+        type="text" [(ngModel)]="mensaje" placeholder="Mensaje" (keyup.enter)="postMensaje()">
     </div>
-
-    <input [disabled]="!servi.persona.uid" class="btn btn-light d-block form-control text-left mb-2" name="mensaje" type="text" [(ngModel)]="mensaje"
-        placeholder="Enviar Mensaje" (keyup.enter)="postMensaje()">
+    <div class="enviar puntero">
+        <span class="material-icons" (click)="postMensaje()">
+            send
+            </span>
+    </div>
 </div>
+
+</div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
+</ngx-loading>

@@ -10,16 +10,35 @@
   
   .chat-window{
     padding: 10px;
-    width: 300px;
-    height: 400px;
+    width: 350px;
+    height: 480px;
     overflow: hidden;
-    border: 1px solid #4080FF;
+    border: 3px solid rgb(4, 91, 253);
     border-radius: 20px;
   }
   
   .app-mensajes {
     overflow-y:scroll;
-    height:270px;
-    /*background:gray;*/
+    height:320px;
+    background:rgb(236, 247, 255);
     padding: 5px;
+    border-radius: 20px;
+  }
+
+  .escribir {
+    width: 90% !important;
+    margin: 6px 6px 0 0 !important;
+  }
+
+  .material-icons {
+    margin-top: 8px !important;
+    border-radius: 50% !important;
+    background-color: green;
+    padding: 8px;
+    color: #4080FF;
+  }
+
+  .borde {
+    border: 2px solid rgb(4, 91, 253);
+
   }
