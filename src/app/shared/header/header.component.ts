@@ -9,12 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  desplegable = true;
   constructor(public infoService: InfoPaginaService,
               public router: Router,
-              public chatServ: ChatService) { }
+              public chatServ: ChatService) {
+                this.ocultarMenu();
+              }
 
   ngOnInit() {
+    console.log("La resolución de tu pantalla es: " + innerWidth)
   }
 
   buscarProducto(termino: string) {
@@ -26,6 +29,17 @@ export class HeaderComponent implements OnInit {
 
     this.router.navigate(['/buscar', termino]);
 
+  }
+
+  ocultarMenu() {
+
+    if ( innerWidth < 992) {
+    if (this.desplegable === true) {
+        this.desplegable = false;
+    } else  {
+      this.desplegable = true;
+    }
+    }
   }
 
 }

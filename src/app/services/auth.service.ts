@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthService {
 
 url = 'https://identitytoolkit.googleapis.com/v1/accounts:';
-apiKey = 'AIzaSyA9ceMo04OQxb9tHKH16VNKhwpKHgyVOmg';
+apiKey = '';
 
   constructor( private http: HttpClient) { }
 
