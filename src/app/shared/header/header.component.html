@@ -1,34 +1,36 @@
-<header class="ae-container-fluid ae-container-fluid--full rk-header ">
+<div (window:scroll)="doSomethingOnWindowsScroll($event)">       
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" routerLink="home">{{infoService.info.titulo}}</a>
-      <button (click)="ocultarMenu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+<header  class="ae-container-fluid ae-container-fluid--full rk-header ">
+
+    <nav [ngClass]="color" class="navbar navbar-expand-lg navbar-light">
+      <a [ngClass]="texto" class="navbar-brand" routerLink="home">{{infoService.info.titulo}}</a>
+      <button  (click)="ocultarMenu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span [ngClass]="texto" class="navbar-toggler-icon"></span>
       </button>
 
       <div *ngIf="desplegable" class=" collapse navbar-collapse text-center" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li  class="nav-link">
-            <a (click)="ocultarMenu()" routerLinkActive="active" routerLink="home" class="nav-link">Inicio</a>
+          <li class="nav-link">
+            <a [ngClass]="texto"   (click)="ocultarMenu()" routerLinkActive="active" routerLink="home" class="nav-link">Inicio</a>
           </li>
           <li  class="nav-link">
-            <a (click)="ocultarMenu()" routerLinkActive="active" routerLink="about" class="nav-link">Conoceme</a>
+            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active" routerLink="about" class="nav-link">Conoceme</a>
           </li>
           <li *ngIf="!chatServ.userLogg"  class="nav-link">
-            <a (click)="ocultarMenu()" routerLinkActive="active" routerLink="login" class="nav-link">login</a>
+            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active" routerLink="login" class="nav-link">login</a>
           </li>
           <li *ngIf="!chatServ.userLogg"  class="nav-link">
-            <a (click)="ocultarMenu()" routerLinkActive="active" routerLink="register" class="nav-link">Registro</a>
+            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active" routerLink="register" class="nav-link">Registro</a>
           </li>
           <li  class="nav-link">
-            <a (click)="ocultarMenu()" routerLinkActive="active"routerLink="chat" class="nav-link">Chat</a>
+            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active"routerLink="chat" class="nav-link">Chat</a>
           </li>
           <li   class="nav-link">
-            <a (click)="ocultarMenu()" routerLinkActive="active" routerLink="contacto" class="nav-link">Contacto</a>
+            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active" routerLink="contacto" class="nav-link">Contacto</a>
           </li>
           <li *ngIf="chatServ.userLogg"  class="nav-link">
-            <a (click)="ocultarMenu()" routerLinkActive="active" (click)="chatServ.logout()" class="nav-link puntero">Salir</a>
+            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active" (click)="chatServ.logout()" class="nav-link puntero">Salir</a>
           </li>
           
 
@@ -48,62 +50,4 @@
 </header>
 
 
-
-
-
-
-
-
-<!-- 
-
-
-<input type="checkbox" id="mobile-menu" class="rk-mobile-menu">
-  <label for="mobile-menu">
-    <svg>
-      <use xlink:href="assets/img/symbols.svg#bar"></use>
-    </svg>
-    <svg>
-      <use xlink:href="assets/img/symbols.svg#bar"></use>
-    </svg>
-    <svg>
-      <use xlink:href="assets/img/symbols.svg#bar"></use>
-    </svg>
-  </label>
-  <div class="ae-container-fluid rk-topbar">
-    <h1 class="rk-logo"><a href="index.html">{{infoService.info.titulo}} <sup>tm</sup></a></h1>
-    <nav class="rk-navigation">
-      <ul class="rk-menu">
-        <li routerLinkActive="active" routerLinkActive="active" class="rk-menu__item">
-          <a routerLink="home" class="rk-menu__link">Home</a>
-        </li>
-        <li  routerLinkActive="active" class="rk-menu__item">
-          <a routerLink="about" class="rk-menu__link">About</a>
-        </li>
-        <li *ngIf="!chatServ.userLogg" routerLinkActive="active" class="rk-menu__item">
-          <a routerLink="register" class="rk-menu__link">Register</a>
-        </li>
-        <li *ngIf="!chatServ.userLogg" routerLinkActive="active" class="rk-menu__item">
-          <a routerLink="login" class="rk-menu__link">Login</a>
-        </li>
-        <li  routerLinkActive="active" class="rk-menu__item">
-          <a routerLink="chat" class="rk-menu__link">Chat</a>
-        </li>
-        <li *ngIf="chatServ.userLogg" routerLinkActive="active" class="rk-menu__item">
-          <a href="#" (click)="chatServ.logout()"  class="rk-menu__link">Salir</a>
-        </li>
-      </ul>
-      <div class="rk-search">
-        <input type="text" 
-        (keyup.enter)="buscarProducto(txtBuscar.value)"
-        #txtBuscar
-        placeholder="Buscar" id="urku-search" class="rk-search-field">
-        <label for="urku-search">
-          <svg>
-            <use xlink:href="assets/img/symbols.svg#icon-search"></use>
-          </svg>
-        </label>
-      </div>
-    </nav>
-  </div>
-
- -->
+</div>

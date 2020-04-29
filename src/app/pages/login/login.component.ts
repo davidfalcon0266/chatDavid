@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
-import { userInfo } from 'os';
 
 
 @Component({
