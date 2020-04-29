@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           Swal.fire({
             icon: 'success',
-            title: 'Se a enbiado un enlace para cambiar contraseña..',
+            title: 'Se a enviado un enlace para cambiar contraseña..',
             text: 'Por favor verifique',
           });
         }).catch(error => {
