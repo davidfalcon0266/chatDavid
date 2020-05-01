@@ -14,6 +14,7 @@ export class PeliculasService {
   desdeStr: any;
   hastaStr: any;
   peliculas: any[] = [];
+  cartelera: any;
 
   constructor(public http: HttpClient) { }
 
@@ -47,7 +48,10 @@ export class PeliculasService {
   getCartelera() {
     this.obtenerFechas();
     return this.http.get(`${this.urlMovieDb}/discover/movie?primary_release_date.gte=${this.desdeStr}
-&primary_release_date.lte=${this.hastaStr}&api_key=${this.apiKey}&language=es&page=1`);
+&primary_release_date.lte=${this.hastaStr}&api_key=${this.apiKey}&language=es&page=1`).subscribe((data: any) => {
+this.cartelera = data.results;
+console.log(this.cartelera);
+});
   }
 
   getPopulares() {

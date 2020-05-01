@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from './../models/usuarios.model';
 import { Mensajes } from './../interfaces/mensajes';
 import { Injectable } from '@angular/core';
-// esto lo traemos d la documentacion de angularfire..de la parte de coleccion
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';

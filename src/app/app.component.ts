@@ -1,3 +1,4 @@
+import { PeliculasService } from './services/peliculas.service';
 import { async } from '@angular/core/testing';
 import { ChatService } from './services/chat.service';
 import { ProductosService } from './services/productos.service';
@@ -17,7 +18,9 @@ export class AppComponent  implements OnInit{
   constructor(public infoService: InfoPaginaService,
               public productoServi: ProductosService,
               public db: AngularFirestore,
-              public chatServi: ChatService) {
+              public chatServi: ChatService,
+              public servi: PeliculasService) {
+                this.servi.getCartelera();
 
                 this.chats = db.collection('chats').valueChanges();
 

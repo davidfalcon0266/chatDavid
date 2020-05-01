@@ -6,18 +6,18 @@
         <div class="row">
             <div [routerLink]="['/pelicula', peliculas[0]?.id, 'cine']"  
             class="col-md-12 div-pic-1 puntero"
-                [ngStyle]="{'background-image': 'url('+ (peliculas[0] | peliculasPipe) + ')'}">
+                [ngStyle]="{'background-image': 'url('+ (peliculas[0] | peliculasPipe:false) + ')'}">
                 <p class="pic-titulo">{{peliculas[0]?.original_title}}</p>
             </div>
         </div>
         <div class="row">
             <div [routerLink]="['/pelicula', peliculas[1]?.id, 'cine']" class="col-md-6  div-pic-2 puntero"
-                [ngStyle]="{'background-image': 'url('+ (peliculas[1] | peliculasPipe) + ')'}">
+                [ngStyle]="{'background-image': 'url('+ (peliculas[1] | peliculasPipe:false) + ')'}">
                 <p class="pic-titulo">{{peliculas[1]?.original_title}}</p>
 
             </div>
             <div [routerLink]="['/pelicula', peliculas[2]?.id, 'cine']" class="col-md-6  div-pic-2 puntero"
-                [ngStyle]="{'background-image': 'url('+ (peliculas[2] | peliculasPipe) + ')'}">
+                [ngStyle]="{'background-image': 'url('+ (peliculas[2] | peliculasPipe:false) + ')'}">
                 <p class="pic-titulo">{{peliculas[2]?.original_title}}</p>
 
             </div>
@@ -26,12 +26,12 @@
     <div class="col-sm-6">
         <div class="row">
             <div [routerLink]="['/pelicula', peliculas[3]?.id, 'cine']" class="col-md-6 div-pic-2 puntero"
-                [ngStyle]="{'background-image': 'url('+ (peliculas[3] | peliculasPipe) + ')'}">
+                [ngStyle]="{'background-image': 'url('+ (peliculas[3] | peliculasPipe:false) + ')'}">
                 <p class="pic-titulo">{{peliculas[3]?.original_title}}</p>
 
             </div>
             <div [routerLink]="['/pelicula', peliculas[4]?.id, 'cine']" class="col-md-6  div-pic-2 puntero"
-                [ngStyle]="{'background-image': 'url('+ (peliculas[4] | peliculasPipe) + ')'}">
+                [ngStyle]="{'background-image': 'url('+ (peliculas[4] | peliculasPipe:false) + ')'}">
                 <p class="pic-titulo">{{peliculas[4]?.original_title}}</p>
 
             </div>

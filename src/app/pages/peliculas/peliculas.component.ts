@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { PeliculasService } from './../../services/peliculas.service';
 import { Component, OnInit } from '@angular/core';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-peliculas',
@@ -12,26 +14,19 @@ export class PeliculasComponent implements OnInit {
   populares: any;
   popularesNinos: any;
   constructor(public peli: PeliculasService,
+              public router: Router
   ) {
-
-
+      this.getPopulares();
+      this.getPopularesNinos();
   }
 
   ngOnInit() {
-    this.getCarteleras();
-    this.getPopulares();
-    this.getPopularesNinos();
   }
 
 
   getCarteleras() {
-    this.peli.getCartelera().subscribe((data: any) => {
-      console.log(data.results);
-      this.cartelera = data.results;
-    });
+    this.peli.getCartelera();
   }
-
-
 
   getPopulares() {
     this.peli.getPopulares().subscribe((data: any) => {
@@ -44,6 +39,8 @@ export class PeliculasComponent implements OnInit {
     this.peli.getPopularesNinos().subscribe((data: any) => {
       console.log('niños', data.results);
       this.popularesNinos = data.results;
+      this.cartelera = this.peli.cartelera;
+
     });
   }
 
