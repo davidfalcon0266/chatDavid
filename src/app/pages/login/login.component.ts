@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
-import { userInfo } from 'os';
 
 
 @Component({
@@ -84,7 +83,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           Swal.fire({
             icon: 'success',
-            title: 'Se a enbiado un enlace para cambiar contraseña..',
+            title: 'Se a enviado un enlace para cambiar contraseña..',
             text: 'Por favor verifique',
           });
         }).catch(error => {

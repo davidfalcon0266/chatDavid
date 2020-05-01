@@ -32,6 +32,11 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
+import { PeliculasComponent } from './pages/peliculas/peliculas.component';
+import { PeliculasPipePipe } from './pipes/peliculas-pipe.pipe';
+import { GaleriaComponent } from './pages/peliculas/galeria.component';
+import { BuscadorPeliculasComponent } from './pages/buscador-peliculas/buscador-peliculas.component';
+import { PeliculaComponent } from './pages/pelicula/pelicula.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,12 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
     RegisterComponent,
     LoginComponent,
     ChatComponent,
-    ContactoComponent
+    ContactoComponent,
+    PeliculasComponent,
+    PeliculasPipePipe,
+    GaleriaComponent,
+    BuscadorPeliculasComponent,
+    PeliculaComponent
   ],
   imports: [
     BrowserModule,
