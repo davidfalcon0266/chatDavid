@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PeliculaComponent implements OnInit {
 
-  pelicula: any[] = [];
+  pelicula: any;
   regresar = '';
   busqueda = '';
 
