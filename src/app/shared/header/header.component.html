@@ -20,11 +20,14 @@
           <li *ngIf="!chatServ.userLogg"  class="nav-link">
             <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active" routerLink="login" class="nav-link">login</a>
           </li>
-          <li *ngIf="!chatServ.userLogg"  class="nav-link">
-            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active" routerLink="register" class="nav-link">Registro</a>
-          </li>
           <li  class="nav-link">
             <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active"routerLink="chat" class="nav-link">Chat</a>
+          </li>
+          <li  class="nav-link">
+            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active"routerLink="cine" class="nav-link">Cine</a>
+          </li>
+          <li  class="nav-link">
+            <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active"routerLink="buscador" class="nav-link">Peliculas</a>
           </li>
           <li   class="nav-link">
             <a [ngClass]="texto"  (click)="ocultarMenu()" routerLinkActive="active" routerLink="contacto" class="nav-link">Contacto</a>
@@ -39,7 +42,7 @@
         <div class="justify-content-center">
           <form class="form-inline m-2">
             <input class="form-control borde mt-2 mr-2 text-center" type="text"
-              (keyup.enter)="buscarProducto(txtBuscar.value); ocultarMenu()" #txtBuscar placeholder="Buscar">
+              (keyup.enter)="buscarProducto(txtBuscar.value); ocultarMenu()" #txtBuscar placeholder="Buscar Lenguajes">
             <button class="btn btn-outline-success my-2 my-sm-0" (click)="buscarProducto(txtBuscar.value);  ocultarMenu()"
               type="button">Search</button>
           </form>

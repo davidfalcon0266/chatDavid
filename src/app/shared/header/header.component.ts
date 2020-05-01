@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit {
 
   doSomethingOnWindowsScroll($event: any) {
      const scrollOffset = $event.srcElement.children[0].scrollTop;
-     console.log('window scroll: ',  scrollOffset);
      if (scrollOffset > 150) {
       this.color = 'bg-dark';
       this.texto = 'text-white';
