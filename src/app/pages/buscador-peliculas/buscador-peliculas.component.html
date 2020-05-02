@@ -3,6 +3,8 @@
         name="buscar" (keyup.enter)="buscarPeliculas()">
 
 
+ <div *ngIf="servi.noEncontrado" class="alert alert-danger" role="alert">No encontramos peliculas con el término {{buscar}}</div>
+
     <div class="card-columns">
         <div class="card" *ngFor="let pelicula of servi.peliculas">
             <img [src]="pelicula | peliculasPipe" class="card-img-top" alt="...">

@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 })
 export class ChatComponent implements OnInit {
 
-  
   element: any;
   loading: boolean;
   mensaje: any = '';
@@ -45,8 +44,6 @@ export class ChatComponent implements OnInit {
 
     this.servi.GuardarMensajes(this.mensaje);
     this.mensaje = '';
-    // .then( () => this.mensaje = '' )
-    // .catch( (err) => console.log('Error al enviar mensaje', err ));
   }
 
   mostrarMessage() {

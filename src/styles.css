@@ -238,6 +238,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  border: 3px solid #ff0404;
 }
 
 .pic-titulo{
@@ -256,6 +257,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  border: 3px solid #1606f8;
+
 }
 
 h1 {
@@ -267,4 +270,28 @@ h1 {
   border: 2px solid blue !important;
   padding: 5px;
   text-align: center;
+}
+
+.row {
+  margin: 0 auto !important;
+  display: flex none;
+}
+
+.col-6 {
+  margin: 0 auto !important;
+  display: flex none;
+}
+
+.col-sm-6 {
+  padding: 1px;
+}
+
+@media (max-width: 992px) {
+ h1
+  {
+  font-size: 1.6em;   }
+
+  .ae-eta {
+    font-size: 1em;
+  }
 }

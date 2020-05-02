@@ -9,15 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class BuscadorPeliculasComponent implements OnInit {
 
   buscar = '';
-
-  constructor(public servi: PeliculasService) { }
-
-  ngOnInit() {
+  constructor(public servi: PeliculasService) {
   }
 
- buscarPeliculas() {
- this.servi.buscarPeliculas(this.buscar);
- }
+  ngOnInit() {
+
+  }
+
+  buscarPeliculas() {
+    if (this.buscar.length === 0) {
+      return;
+    }
+    this.servi.buscarPeliculas(this.buscar);
+  }
 
 
 }

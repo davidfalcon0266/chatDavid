@@ -8,6 +8,8 @@ export class PeliculasService {
 
   public apiKey = '84c92bb0483e8a26c408a862b4ba745e';
   public urlMovieDb = 'https://api.themoviedb.org/3';
+  public noEncontrado = false;
+
 
   desde = new Date();
   hasta = new Date();
@@ -49,9 +51,9 @@ export class PeliculasService {
     this.obtenerFechas();
     return this.http.get(`${this.urlMovieDb}/discover/movie?primary_release_date.gte=${this.desdeStr}
 &primary_release_date.lte=${this.hastaStr}&api_key=${this.apiKey}&language=es&page=1`).subscribe((data: any) => {
-this.cartelera = data.results;
-console.log(this.cartelera);
-});
+      this.cartelera = data.results;
+      console.log(this.cartelera);
+    });
   }
 
   getPopulares() {
@@ -64,11 +66,17 @@ G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&page=1`);
   }
 
   buscarPeliculas(texto: string) {
+    this.noEncontrado = false;
     return this.http.get(`${this.urlMovieDb}/search/movie?query=${texto}
 &sort_by=popularity.desc&api_key=${this.apiKey}&language=es&page=1`).subscribe((data: any) => {
-  this.peliculas = data.results;
-  console.log(this.peliculas);
-});
+      this.peliculas = data.results;
+      console.log(this.peliculas);
+      if (this.peliculas.length === 0) {
+        this.noEncontrado = true;
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 
   buscarById(id: any) {

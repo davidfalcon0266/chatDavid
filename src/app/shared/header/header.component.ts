@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   desplegable = true;
-  color = 'navbar-light';
+  color = 'navbar';
   fondo = 'navbar navbar-expand-lg';
   texto = 'text:dark';
   constructor(public infoService: InfoPaginaService,
@@ -27,11 +27,11 @@ export class HeaderComponent implements OnInit {
   doSomethingOnWindowsScroll($event: any) {
      const scrollOffset = $event.srcElement.children[0].scrollTop;
      if (scrollOffset > 150) {
-      this.color = 'bg-dark';
+      this.color = 'cambio_navbar';
       this.texto = 'text-white';
      } else {
-       this.color = 'navbar-light';
-       this.texto = 'text:dark';
+       this.color = 'navbar';
+       this.texto = 'text-dark';
      }
   }
 

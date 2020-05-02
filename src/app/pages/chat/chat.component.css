@@ -11,16 +11,17 @@
   .chat-window{
     padding: 10px;
     width: 350px;
-    height: 480px;
+    height: 490px;
     overflow: hidden;
     border: 3px solid rgb(4, 91, 253);
     border-radius: 20px;
+    margin: 0 auto !important;
   }
   
   .app-mensajes {
     overflow-y:scroll;
     height:320px;
-    background:rgb(236, 247, 255);
+    background: aqua;
     padding: 5px;
     border-radius: 20px;
   }
@@ -30,15 +31,27 @@
     margin: 6px 6px 0 0 !important;
   }
 
-  .material-icons {
-    margin-top: 8px !important;
-    border-radius: 50% !important;
-    background-color: green;
-    padding: 8px;
-    color: #4080FF;
+  svg {
+    overflow: hidden;
+    color: red;
+    vertical-align: middle;
+    margin-top: 17px;
+    font-size: 30px;
+    background: aqua;
+    border-radius: 50%;
+    padding: 2px;
   }
 
   .borde {
     border: 2px solid rgb(4, 91, 253);
 
+  }
+
+  .fond {
+    background: aqua;
+    border-radius: 20px;
+  }
+
+  .badge {
+    text-align: left !important;
   }
