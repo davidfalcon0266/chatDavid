@@ -9,8 +9,8 @@ export class PeliculasService {
   public apiKey = '84c92bb0483e8a26c408a862b4ba745e';
   public urlMovieDb = 'https://api.themoviedb.org/3';
   public noEncontrado = false;
-
-
+ 
+  loading: boolean;
   desde = new Date();
   hasta = new Date();
   desdeStr: any;
@@ -18,41 +18,50 @@ export class PeliculasService {
   peliculas: any[] = [];
   cartelera: any;
 
-  constructor(public http: HttpClient) { }
-
-  obtenerFechas() {
-    this.hasta.setDate(this.hasta.getDate() + 7);
-
-    if (this.desde.getDate() < 10) {
-      this.desdeStr = `${this.desde.getFullYear()}-${this.desde.getMonth() + 1}-0${this.desde.getDate()}`;
-    }
-    if (this.desde.getMonth() < 10) {
-      this.desdeStr = `${this.desde.getFullYear()}-0${this.desde.getMonth() + 1}-${this.desde.getDate()}`;
-    }
-    if (this.desde.getMonth() < 10 && this.desde.getDate() < 10) {
-      this.desdeStr = `${this.desde.getFullYear()}-0${this.desde.getMonth() + 1}-0${this.desde.getDate()}`;
-    }
-    if (this.hasta.getMonth() < 10) {
-      this.hastaStr = `${this.hasta.getFullYear()}-0${this.hasta.getMonth() + 1}-${this.hasta.getDate()}`;
-    }
-    if (this.hasta.getDate() < 10) {
-      this.hastaStr = `${this.hasta.getFullYear()}-${this.hasta.getMonth() + 1}-0${this.hasta.getDate()}`;
-    }
-    if (this.hasta.getDate() < 10 && this.hasta.getMonth() < 10) {
-      this.hastaStr = `${this.hasta.getFullYear()}-0${this.hasta.getMonth() + 1}-0${this.hasta.getDate()}`;
-    } else {
-      this.desdeStr = `${this.desde.getFullYear()}-${this.desde.getMonth() + 1}-${this.desde.getDate()}`;
-      this.hastaStr = `${this.hasta.getFullYear()}-${this.hasta.getMonth() + 1}-${this.hasta.getDate()}`;
-    }
-
+  constructor(public http: HttpClient) {
+    this.loading = false;
   }
 
   getCartelera() {
-    this.obtenerFechas();
-    return this.http.get(`${this.urlMovieDb}/discover/movie?primary_release_date.gte=${this.desdeStr}
-&primary_release_date.lte=${this.hastaStr}&api_key=${this.apiKey}&language=es&page=1`).subscribe((data: any) => {
+    this.loading = true;
+
+    this.hasta.setDate(this.hasta.getDate() + 7);
+    if (this.desde.getMonth() < 10 && this.desde.getDate() < 10) {
+      this.desdeStr = `${this.desde.getFullYear()}-0${this.desde.getMonth() + 1}-0${this.desde.getDate()}`;
+    } else if (this.desde.getDate() < 10) {
+      this.desdeStr = `${this.desde.getFullYear()}-${this.desde.getMonth() + 1}-0${this.desde.getDate()}`;
+    } else
+    if (this.desde.getMonth() < 10) {
+      this.desdeStr = `${this.desde.getFullYear()}-0${this.desde.getMonth() + 1}-${this.desde.getDate()}`;
+    } else {
+      this.desdeStr = `${this.desde.getFullYear()}-${this.desde.getMonth() + 1}-${this.desde.getDate()}`;
+
+    }
+
+    if (this.hasta.getDate() < 10 && this.hasta.getMonth() < 10) {
+      this.hastaStr = `${this.hasta.getFullYear()}-0${this.hasta.getMonth() + 1}-0${this.hasta.getDate()}`;
+    } else
+    if (this.hasta.getMonth() < 10) {
+      this.hastaStr = `${this.hasta.getFullYear()}-0${this.hasta.getMonth() + 1}-${this.hasta.getDate()}`;
+    } else
+    if (this.hasta.getDate() < 10) {
+      this.hastaStr = `${this.hasta.getFullYear()}-${this.hasta.getMonth() + 1}-0${this.hasta.getDate()}`;
+    } else {
+      this.hastaStr = `${this.hasta.getFullYear()}-${this.hasta.getMonth() + 1}-${this.hasta.getDate()}`;
+    }
+
+    let ur = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${this.desdeStr}
+&primary_release_date.lte=${this.hastaStr}&api_key=${this.apiKey}&language=es&page=1`;
+
+    console.log(ur);
+    return this.http.get(ur).subscribe((data: any) => {
+      this.loading = false;
+
       this.cartelera = data.results;
       console.log(this.cartelera);
+    }, error => {
+      this.loading = false;
+
     });
   }
 
@@ -66,9 +75,12 @@ G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&page=1`);
   }
 
   buscarPeliculas(texto: string) {
+    this.loading = true;
     this.noEncontrado = false;
     return this.http.get(`${this.urlMovieDb}/search/movie?query=${texto}
 &sort_by=popularity.desc&api_key=${this.apiKey}&language=es&page=1`).subscribe((data: any) => {
+      this.loading = false;
+
       this.peliculas = data.results;
       console.log(this.peliculas);
       if (this.peliculas.length === 0) {
@@ -76,6 +88,8 @@ G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&page=1`);
       }
     }, error => {
       console.log(error);
+      this.loading = false;
+
     });
   }
 

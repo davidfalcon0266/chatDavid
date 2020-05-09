@@ -295,3 +295,8 @@ h1 {
     font-size: 1em;
   }
 }
+
+.loadin {
+  width: 100%;
+  height: 100vh !important;
+}

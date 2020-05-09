@@ -1,7 +1,11 @@
 <app-header></app-header>
+ <!-- <app-toolbar></app-toolbar> -->
 <section class="rk-main">
-    <div id="particles-js"></div>
-
+    <div id="particles-js">
+        
+    </div>
+    <ngx-loading [show]="servi.loading" [config]="{ backdropBorderRadius: '4px', fullScreenBackdrop: 'true' }">
+    </ngx-loading>
     <router-outlet></router-outlet>
 </section>
 <app-footer></app-footer>

@@ -1,3 +1,9 @@
+
+<div *ngIf="loading" class="loadin">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '4px', fullScreenBackdrop: 'true' }">
+    </ngx-loading>
+</div>
+
 <div class="container mt-2" *ngIf="pelicula">
     <h3>{{pelicula.title}}</h3>
     <hr>

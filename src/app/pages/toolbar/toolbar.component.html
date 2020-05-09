@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="fixed-top">
+    <div class="container d-flex">
+        <div class="izq">
+            <a (click)="sidenav.toggle()">Menu</a>
+        </div>
+        <span class="ml-auto">
+            <a routerLink="/login" routerLinkActive="active">Login</a>
+            <a routerLink="/cine" routerLinkActive="active">Cine</a>
+            <a routerLink="/buscador" routerLinkActive="active">Peliculas</a>
+        </span>
+    </div>
+</mat-toolbar>
+
+
+    <mat-sidenav-container class="example-container fixed-top">
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+            Sidenav content
+        </mat-sidenav>
+    </mat-sidenav-container>

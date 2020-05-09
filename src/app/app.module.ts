@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import {MatToolbarModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule,
-  MatSelectModule
+  MatSelectModule, MatSidenavModule
 } from '@angular/material';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -15,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { NgxLoadingModule } from 'ngx-loading';
@@ -37,6 +37,7 @@ import { PeliculasPipePipe } from './pipes/peliculas-pipe.pipe';
 import { GaleriaComponent } from './pages/peliculas/galeria.component';
 import { BuscadorPeliculasComponent } from './pages/buscador-peliculas/buscador-peliculas.component';
 import { PeliculaComponent } from './pages/pelicula/pelicula.component';
+import { ToolbarComponent } from './pages/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { PeliculaComponent } from './pages/pelicula/pelicula.component';
     PeliculasPipePipe,
     GaleriaComponent,
     BuscadorPeliculasComponent,
-    PeliculaComponent
+    PeliculaComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -72,13 +74,16 @@ import { PeliculaComponent } from './pages/pelicula/pelicula.component';
     MatDialogModule,
     MatSelectModule,
     AngularFireModule,
+    MatSidenavModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
     NgxLoadingModule.forRoot({})
   ],
-  providers: [],
+  providers: [
+    {provide: StorageBucket, useValue: 'gs://firechat-d3575.appspot.com'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

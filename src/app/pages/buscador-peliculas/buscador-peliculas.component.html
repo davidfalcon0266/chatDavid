@@ -1,7 +1,12 @@
 <div class="container">
-    <input type="text" class="form-control text-center borde mb-3" placeholder="Buscar peliculas" [(ngModel)]="buscar"
-        name="buscar" (keyup.enter)="buscarPeliculas()">
+    
 
+        <h3 class="text-center text-primary mt-5">
+            Aqui podras buscar cualquier pelicula que quieras...Vamos piensa y solo escribe..
+        </h3>
+      
+        <input type="text" class="form-control text-center borde my-5" placeholder="Buscar peliculas" [(ngModel)]="buscar"
+        name="buscar" (keyup.enter)="buscarPeliculas()">
 
  <div *ngIf="servi.noEncontrado" class="alert alert-danger" role="alert">No encontramos peliculas con el término {{buscar}}</div>
 
