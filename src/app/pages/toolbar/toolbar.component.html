@@ -14,32 +14,32 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" [(opened)]="opened">
         <mat-nav-list>
-            <a mat-list-item routerLinkActive="active" routerLink="/home">
+            <a (click)="opened = !opened" mat-list-item routerLinkActive="active" routerLink="/home">
                 <mat-icon>home</mat-icon> Inicio
             </a>
         </mat-nav-list>
         <mat-nav-list>
-            <a mat-list-item routerLinkActive="active" routerLink="/cine">
+            <a (click)="opened = !opened" mat-list-item routerLinkActive="active" routerLink="/cine">
                 <mat-icon>camera_roll</mat-icon> Cine
             </a>
         </mat-nav-list>
         <mat-nav-list>
-            <a mat-list-item routerLinkActive="active" routerLink="/buscador">
+            <a (click)="opened = !opened" mat-list-item routerLinkActive="active" routerLink="/buscador">
                 <mat-icon>search</mat-icon> Buscar
             </a>
         </mat-nav-list>
         <mat-nav-list>
-            <a mat-list-item routerLinkActive="active" routerLink="/chat">
+            <a (click)="opened = !opened" mat-list-item routerLinkActive="active" routerLink="/chat">
                 <mat-icon>chat</mat-icon> Chat
             </a>
         </mat-nav-list>
         <mat-nav-list>
-            <a mat-list-item routerLinkActive="active" routerLink="/contacto">
+            <a (click)="opened = !opened" mat-list-item routerLinkActive="active" routerLink="/contacto">
                 <mat-icon>help</mat-icon> Ayuda
             </a>
         </mat-nav-list>
         <mat-nav-list>
-            <a mat-list-item routerLinkActive="active" routerLink="/about">
+            <a (click)="opened = !opened" mat-list-item routerLinkActive="active" routerLink="/about">
                 <mat-icon>how_to_reg</mat-icon> Conoceme
             </a>
         </mat-nav-list>
