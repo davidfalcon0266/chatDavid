@@ -1,3 +1,4 @@
+import { ChatService } from './../../services/chat.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  opened: boolean;
-  open: boolean;
-  constructor() { }
+  opened: false;
+  constructor( public chatServ: ChatService) { }
 
   ngOnInit() {
   }

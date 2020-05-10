@@ -57,7 +57,7 @@ messageSuccess() {
   Swal.fire({
     icon: 'success',
     title: 'Mensaje enviado..!',
-    text: 'Le contacteré los mas pronto posible..!',
+    text: 'Le contactaré los mas pronto posible..!',
   });
 }
 

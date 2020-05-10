@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import {MatToolbarModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule,
-  MatSelectModule, MatSidenavModule
+  MatSelectModule, MatSidenavModule, MatListModule
 } from '@angular/material';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -73,6 +73,7 @@ import { ToolbarComponent } from './pages/toolbar/toolbar.component';
     ReactiveFormsModule,
     MatDialogModule,
     MatSelectModule,
+    MatListModule,
     AngularFireModule,
     MatSidenavModule,
     AngularFireModule.initializeApp(environment.firebase),

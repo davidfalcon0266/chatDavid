@@ -1,0 +1,20 @@
+
+.cent {
+    margin-bottom: 10% !important;
+}
+
+@media (max-width: 992px) {
+    .cent
+    {
+margin-bottom: 15% !important;  }
+}
+@media (max-width: 650px) {
+    .cent
+    {
+margin-bottom: 22% !important;  }
+}
+@media (max-width: 400px) {
+    .cent
+    {
+margin-bottom: 30% !important;  }
+}

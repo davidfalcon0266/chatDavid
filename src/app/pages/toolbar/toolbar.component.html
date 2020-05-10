@@ -1,19 +1,48 @@
-<mat-toolbar color="primary" class="fixed-top">
-    <div class="container d-flex">
-        <div class="izq">
-            <a (click)="sidenav.toggle()">Menu</a>
-        </div>
-        <span class="ml-auto">
-            <a routerLink="/login" routerLinkActive="active">Login</a>
-            <a routerLink="/cine" routerLinkActive="active">Cine</a>
-            <a routerLink="/buscador" routerLinkActive="active">Peliculas</a>
+<mat-toolbar color="primary" class="navbar fixed-top">
+    <div class="container">
+        <span color="primary" (click)="opened = !opened">
+            <mat-icon>menu</mat-icon>
         </span>
+        <a class="prime" *ngIf="!chatServ.userLogg"  routerLink="/login"> 
+            <mat-icon> account_circle </mat-icon></a>
+        <a  *ngIf="chatServ.userLogg" (click)="chatServ.logout()"> <mat-icon> power_settings_new </mat-icon>
+        </a>
     </div>
 </mat-toolbar>
 
 
-    <mat-sidenav-container class="example-container fixed-top">
-        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-            Sidenav content
-        </mat-sidenav>
-    </mat-sidenav-container>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <mat-nav-list>
+            <a mat-list-item routerLinkActive="active" routerLink="/home">
+                <mat-icon>home</mat-icon> Inicio
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item routerLinkActive="active" routerLink="/cine">
+                <mat-icon>camera_roll</mat-icon> Cine
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item routerLinkActive="active" routerLink="/buscador">
+                <mat-icon>search</mat-icon> Buscar
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item routerLinkActive="active" routerLink="/chat">
+                <mat-icon>chat</mat-icon> Chat
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item routerLinkActive="active" routerLink="/contacto">
+                <mat-icon>help</mat-icon> Ayuda
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item routerLinkActive="active" routerLink="/about">
+                <mat-icon>how_to_reg</mat-icon> Conoceme
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+</mat-sidenav-container>

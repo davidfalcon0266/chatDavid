@@ -42,6 +42,7 @@ export class ChatService {
     });
   }
 
+
   loginGoogle() {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
