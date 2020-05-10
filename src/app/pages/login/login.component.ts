@@ -55,7 +55,6 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/chat');
         this.servi.saveStorage(user.user.uid);
         }).catch(error => {
-      console.log(error);
       this.loading = false;
       this.messageError();
       return;
@@ -77,9 +76,7 @@ export class LoginComponent implements OnInit {
     ).then((result) => {
       if (result.value) {
         this.loading = true;
-        console.log(result.value);
         this.servi.restablecerPassword(result.value).then((user: any) => {
-          console.log(user);
           this.loading = false;
           Swal.fire({
             icon: 'success',

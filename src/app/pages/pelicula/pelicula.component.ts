@@ -29,7 +29,6 @@ export class PeliculaComponent implements OnInit {
         this.loading = false;
 
         this.pelicula = pelicula;
-        console.log(this.pelicula);
       }, error => {
         this.loading = false;
 

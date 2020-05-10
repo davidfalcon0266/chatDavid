@@ -1,1 +1,75 @@
-<p>contacto works!</p>
+<div class="">
+    <div class="principal animated fadeIn">
+        <div class="row">
+            <div class="col-6 mt-5">
+                <div class="animated slideInRight delay-1s">
+                <div class="login"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 mt-5">
+                <div class="justify-content-center animated slideInLeft delay-1s">
+                    <h4 class="text-primary f-w text-center">Dejame tu mensaje te cotactaré a la brevedad..!</h4>
+
+                    <h4 class="text-center text-primary iconsize-80">
+                        <mat-icon> message </mat-icon>
+                    </h4>
+                    <form [formGroup]="formG" class=" text-center mx-5">
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label class="text-dark">Nombre</mat-label>
+                            <input matInput id="nombre" class="text-dark f-w" name="nombre" type="text"
+                                formControlName="nombre" required>
+                            <mat-error
+                                *ngIf="formG.controls?.nombre?.errors && formG.controls?.nombre?.errors.required && (formG.controls?.nombre?.dirty || formG.controls?.nombre?.touched)">
+                                Campo Requerido</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls?.nombre?.errors && formG.controls?.nombre?.errors.minlength && (formG.controls?.nombre?.dirty || formG.controls?.nombre?.touched)">
+                                Minimo 5 caracteres</mat-error>
+                        </mat-form-field> <br>
+
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label class="text-dark">Correo</mat-label>
+                            <input matInput id="correo" class=" f-w" name="correo" formControlName="correo"
+                                type="email"
+                                pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                                required>
+                            <mat-error
+                                *ngIf="formG.controls.correo.errors && formG.controls.correo.errors.required && (formG.controls.correo.dirty || formG.controls.correo.touched)">
+                                Campo Requerido</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls.correo.errors && formG.controls.correo.errors.pattern && (formG.controls.correo.dirty || formG.controls.correo.touched)">
+                                Debe introducir una direccion e correo valida</mat-error>
+
+                        </mat-form-field> <br>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label class="text-dark">Mensaje</mat-label>
+                            <input matInput #mensaje maxlength="256" class="text-dark f-w" name="mensaje"
+                            formControlName="mensaje">
+                                <mat-hint class="text-text-dark" align="start"><strong>Dejame tu mensaje...</strong> </mat-hint>
+                                <mat-hint class="text-dark" align="end">{{mensaje.value.length}} / 256</mat-hint>
+                            <mat-error
+                                *ngIf="formG.controls?.mensaje?.errors && formG.controls?.mensaje?.errors.required && (formG.controls?.mensaje?.dirty || formG.controls?.mensaje?.touched)">
+                                Campo Requerido</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls?.mensaje?.errors && formG.controls?.mensaje?.errors.minlength && (formG.controls?.mensaje?.dirty || formG.controls?.mensaje?.touched)">
+                                Minimo 5 caracteres</mat-error>
+                        </mat-form-field> 
+                        <div class="mt-5">
+                            <button mat-raised-button class="w-50" color="primary" [disabled]="!formG.valid"
+                                type="button" (click)="onSubmit()">Contactar</button> <br>
+
+                    
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
+</ngx-loading>

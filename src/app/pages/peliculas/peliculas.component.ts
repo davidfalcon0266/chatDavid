@@ -30,14 +30,12 @@ export class PeliculasComponent implements OnInit {
 
   getPopulares() {
     this.peli.getPopulares().subscribe((data: any) => {
-      console.log(data.results);
       this.populares = data.results;
     });
   }
 
   getPopularesNinos() {
     this.peli.getPopularesNinos().subscribe((data: any) => {
-      console.log('niños', data.results);
       this.popularesNinos = data.results;
       this.cartelera = this.peli.cartelera;
 

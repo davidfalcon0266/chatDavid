@@ -1,4 +1,3 @@
-<a routerLink="/home" class="text-primary fixed-top mt-5"> Regesar</a>
 
 <div align="center" *ngIf="!producto">
   <h2>cargando...</h2>
@@ -24,7 +23,7 @@
     <p>Espere por favor..</p>
 </div>
 <section *ngIf="producto">
-
+ <button class="btn btn-danger baja fixed-top" routerLink="/home">Regresar</button>
   <div class="animated slideInLeft delay-1s">
   <header [ngStyle]="{'background-image': 'url(assets/productos/'+ id +'/main.jpg)'}"
    class="rk-portfolio-cover  item-inside-1"> 

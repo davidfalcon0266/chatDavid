@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { Usuario } from './../models/usuarios.model';
 import { Mensajes } from './../interfaces/mensajes';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -31,7 +30,6 @@ export class ChatService {
   ) {
     // con esto recibimos e usuraio que hemos registrado
     this.afAuth.authState.subscribe(user => {
-      console.log(user);
       if (!user) {
         this.userLogg = false;
         return;
@@ -60,7 +58,6 @@ export class ChatService {
     this.loading = true;
     return this.afAuth.auth.createUserWithEmailAndPassword(mail, password).then(async (user) => {
       this.loading = false;
-      console.log(user);
       await this.mandarCorreo();
       await this.afAuth.auth.signOut();
 
@@ -118,7 +115,6 @@ export class ChatService {
         this.afAuth.auth.signOut();
         localStorage.clear();
         this.router.navigateByUrl('/home');
-        console.log('fuera');
       }
     });
   }

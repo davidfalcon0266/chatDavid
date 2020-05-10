@@ -6,7 +6,7 @@
 </div>
 <div class="container">
     <br>
-    <app-galeria *ngIf="cartelera.length > 0" [peliculas]="cartelera|slice:0:6" titulo="Peliculas en cartelera"></app-galeria>
-    <app-galeria *ngIf="populares.length > 0" [peliculas]="populares|slice:0:6" titulo="Populares"></app-galeria>
-    <app-galeria *ngIf="popularesNinos.length > 0" [peliculas]="popularesNinos|slice:0:6" titulo="Populares entre los mas pequeños"></app-galeria>
+    <app-galeria *ngIf="cartelera?.length > 0" [peliculas]="cartelera|slice:0:6" titulo="Peliculas en cartelera"></app-galeria>
+    <app-galeria *ngIf="populares?.length > 0" [peliculas]="populares|slice:0:6" titulo="Populares"></app-galeria>
+    <app-galeria *ngIf="popularesNinos?.length > 0" [peliculas]="popularesNinos|slice:0:6" titulo="Populares entre los mas pequeños"></app-galeria>
 </div>

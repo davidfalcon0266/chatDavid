@@ -2,3 +2,23 @@
 .top-fixed .rk-main {
     padding-top: 5.5rem !important;
 }
+
+.baja {
+    margin: 7% 0 0 20px;
+}
+
+@media (max-width: 1120px) {
+    .baja
+    {
+        margin: 12% 0 0 20px;}
+}
+@media (max-width: 668px) {
+    .baja
+    {
+        margin: 16% 0 0 20px;}
+}
+@media (max-width: 480px) {
+    .baja
+    {
+        margin: 24% 0 0 20px;}
+}

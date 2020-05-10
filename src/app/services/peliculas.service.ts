@@ -50,15 +50,13 @@ export class PeliculasService {
       this.hastaStr = `${this.hasta.getFullYear()}-${this.hasta.getMonth() + 1}-${this.hasta.getDate()}`;
     }
 
-    let ur = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${this.desdeStr}
+    const ur = `${this.urlMovieDb}/discover/movie?primary_release_date.gte=${this.desdeStr}
 &primary_release_date.lte=${this.hastaStr}&api_key=${this.apiKey}&language=es&page=1`;
 
     console.log(ur);
     return this.http.get(ur).subscribe((data: any) => {
       this.loading = false;
-
       this.cartelera = data.results;
-      console.log(this.cartelera);
     }, error => {
       this.loading = false;
 
@@ -82,7 +80,6 @@ G&sort_by=popularity.desc&api_key=${this.apiKey}&language=es&page=1`);
       this.loading = false;
 
       this.peliculas = data.results;
-      console.log(this.peliculas);
       if (this.peliculas.length === 0) {
         this.noEncontrado = true;
       }

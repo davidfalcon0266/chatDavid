@@ -15,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { NgxLoadingModule } from 'ngx-loading';
@@ -81,9 +81,7 @@ import { ToolbarComponent } from './pages/toolbar/toolbar.component';
     AngularFireAuthModule,
     NgxLoadingModule.forRoot({})
   ],
-  providers: [
-    {provide: StorageBucket, useValue: 'gs://firechat-d3575.appspot.com'}
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
