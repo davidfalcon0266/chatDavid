@@ -1,12 +1,15 @@
 import { ItemComponent } from './pages/item/item.component';
 import { AboutComponent } from './pages/about/about.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import {MatToolbarModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule,
-  MatSelectModule, MatSidenavModule, MatListModule
+  MatSelectModule, MatSidenavModule, MatListModule, MatPaginatorModule, MatTableModule, MatSnackBarModule
 } from '@angular/material';
+
+import {CdkTableModule} from '@angular/cdk/table';
+
 
 import { MatIconModule } from '@angular/material/icon';
 
@@ -38,6 +41,7 @@ import { GaleriaComponent } from './pages/peliculas/galeria.component';
 import { BuscadorPeliculasComponent } from './pages/buscador-peliculas/buscador-peliculas.component';
 import { PeliculaComponent } from './pages/pelicula/pelicula.component';
 import { ToolbarComponent } from './pages/toolbar/toolbar.component';
+import { TablaMensajesComponent } from './pages/tabla-mensajes/tabla-mensajes.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,8 @@ import { ToolbarComponent } from './pages/toolbar/toolbar.component';
     GaleriaComponent,
     BuscadorPeliculasComponent,
     PeliculaComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    TablaMensajesComponent
   ],
   imports: [
     BrowserModule,
@@ -74,13 +79,20 @@ import { ToolbarComponent } from './pages/toolbar/toolbar.component';
     MatDialogModule,
     MatSelectModule,
     MatListModule,
+    MatPaginatorModule,
+    MatTableModule,
     AngularFireModule,
     MatSidenavModule,
+    CdkTableModule,
+    MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
     NgxLoadingModule.forRoot({})
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [],
   bootstrap: [AppComponent]

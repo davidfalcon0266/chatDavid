@@ -1,3 +1,4 @@
+import { TablaMensajesComponent } from './pages/tabla-mensajes/tabla-mensajes.component';
 import { BuscadorPeliculasComponent } from './pages/buscador-peliculas/buscador-peliculas.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { ChatComponent } from './pages/chat/chat.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'buscador/:buscar', component: BuscadorPeliculasComponent},
   {path: 'pelicula/:id/:pag', component: PeliculaComponent},
   {path: 'pelicula/:id/:pag/:busqueda', component: PeliculaComponent},
+  {path: 'mensajes', component: TablaMensajesComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 

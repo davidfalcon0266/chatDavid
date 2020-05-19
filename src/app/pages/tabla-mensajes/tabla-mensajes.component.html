@@ -1,0 +1,29 @@
+<div class="container">
+    <h3 *ngIf="!loading" class="text-primary f-bold">Bienvenido a los mensajes dejados
+        por los usuarios que quieren contactarte</h3>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '2px', fullScreenBackdrop: 'true' }">
+    </ngx-loading>
+    <div class="completo">
+        <table  mat-table *ngIf="!loading" #table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell-manteiner *matHeaderCellDef> Nombre</th>
+                <td mat-cell-manteiner *matCellDef="let element">{{element.nombre}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="correo">
+                <th mat-header-cell-manteiner *matHeaderCellDef> Correo</th>
+                <td mat-cell-manteiner *matCellDef="let element">{{element.correo}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="mensaje">
+                <th mat-header-cell-manteiner *matHeaderCellDef> Mensaje</th>
+                <td mat-cell-manteiner *matCellDef="let element">{{element.mensaje | slice:0: 30}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"> </tr>
+        </table >
+        <mat-paginator [pageSizeOptions]="[6]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

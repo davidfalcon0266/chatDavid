@@ -1,0 +1,30 @@
+table {
+    width: 100% !important;
+  }
+
+  .mat-header-row {
+    background-color: darkblue;
+    color: #ffff;
+  }
+
+  .mat-header-row, .mat-row {
+    justify-content: space-evenly;
+  }
+
+  mat-paginator {
+    width: 100% !important;
+    background-color: #F6F7F8;
+    color: black;
+  }
+
+  .mat-elevation-z8 {
+    width: 100% !important;
+  }
+
+  #table {
+    min-width: 100% !important;
+  }
+
+  .completo {
+    width: 100% !important;
+  }

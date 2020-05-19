@@ -8,7 +8,7 @@
   mat-sidenav {
      width: 200px;
      cursor: pointer;
-     background-color: #3f51b5;
+     background-color: darkblue;
      position: fixed;
      top: 55px;
      z-index: 1000;
@@ -35,4 +35,9 @@
 .active {
     border-bottom: 3px solid rgb(250, 3, 3);
     text-align: center;
+}
+
+.mat-toolbar.mat-primary {
+    background: darkblue;
+    color: #fff;
 }

@@ -43,6 +43,11 @@
                 <mat-icon>how_to_reg</mat-icon> Conoceme
             </a>
         </mat-nav-list>
+        <mat-nav-list>
+            <a (click)="opened = !opened" mat-list-item routerLinkActive="active" routerLink="/mensajes">
+                <mat-icon>comment</mat-icon> Mensajes
+            </a>
+        </mat-nav-list>
     </mat-sidenav>
 
 </mat-sidenav-container>

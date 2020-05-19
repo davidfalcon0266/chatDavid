@@ -17,9 +17,8 @@ export class ContactoService {
     this.itemsCollection = this.afs.collection<Contacto>(
       'mensajes');
 
-    return this.itemsCollection.valueChanges().subscribe(data => {
-    });
-}
+    return this.itemsCollection.valueChanges();
+  }
 
   agregarMensajes(mensaje: Contacto) {
     return this.itemsCollection.add(mensaje);
