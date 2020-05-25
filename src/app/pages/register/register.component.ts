@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
   formG: FormGroup;
   public loading = false;
   public password = false;
+  hide1 = true;
+  hide2 = true;
   usuario: Usuario = new Usuario('', '', '');
   constructor(public formB: FormBuilder,
               public router: Router,

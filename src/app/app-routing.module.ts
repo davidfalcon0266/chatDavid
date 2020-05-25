@@ -1,3 +1,4 @@
+import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { TablaMensajesComponent } from './pages/tabla-mensajes/tabla-mensajes.component';
 import { BuscadorPeliculasComponent } from './pages/buscador-peliculas/buscador-peliculas.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'pelicula/:id/:pag', component: PeliculaComponent},
   {path: 'pelicula/:id/:pag/:busqueda', component: PeliculaComponent},
   {path: 'mensajes', component: TablaMensajesComponent},
+  {path: 'reserva', component: CalendarioComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 

@@ -1,0 +1,60 @@
+<div class="container" align="center">
+    <div class="jumbotron">
+        <h1 class="display-4">Hola Bienvenido</h1>
+        <p class="lead">Aqui podras seleccionar Fecha, hora y motivo de tu agenda.!</p>
+        <hr class="my-4">
+        <a *ngIf="!comenzar" (click)="comenzar = !comenzar" class="btn btn-outline-primary btn-lg text-dark"
+            role="button">Comenzar</a>
+        <a *ngIf="comenzar" (click)="comenzar = !comenzar" class="btn btn-outline-primary btn-lg text-dark"
+            role="button">Cerrar</a>
+    </div>
+    <form [formGroup]="formG">
+        <div *ngIf="comenzar">
+            <mat-form-field>
+                <mat-label>Selecciona tu Region</mat-label>
+                <mat-select formControlName="region" name="region">
+                    <mat-option *ngFor="let region of regiones" [value]="region.value">
+                        {{region.region}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Selecciona tu comuna</mat-label>
+                <mat-select formControlName="region" name="region">
+                    <mat-option *ngFor="let comuna of comunas" [value]="comuna.value">
+                        {{comuna.region}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field color="primary">
+                <input formControlName="fecha" matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            </mat-form-field> <br>
+
+            <mat-form-field *ngIf="!formG.controls?.fecha?.errors?.required">
+                <mat-label>Horas disponibles</mat-label>
+                <mat-select formControlName="hora" name="hora">
+                    <mat-option *ngFor="let hora of horaSeleccion" [value]="hora">
+                        {{hora}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field *ngIf="!formG.controls?.fecha?.errors?.required && !formG.controls?.hora?.errors?.required">
+                <mat-label>Motivo</mat-label>
+                <mat-select formControlName="motivo" name="motivo">
+                    <mat-option *ngFor="let motivo of motivos" [value]="motivo">
+                        {{motivo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <button [disabled]="!formG.valid" class="btn btn-outline-primary" (click)="fechaa()"> Agendar</button>
+        </div>
+    </form>
+
+
+</div>

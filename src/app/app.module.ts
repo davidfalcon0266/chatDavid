@@ -5,7 +5,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import {MatToolbarModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule,
-  MatSelectModule, MatSidenavModule, MatListModule, MatPaginatorModule, MatTableModule, MatSnackBarModule
+  MatSelectModule, MatSidenavModule, MatListModule, MatPaginatorModule, MatTableModule, MatSnackBarModule,
+  MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
 
 import {CdkTableModule} from '@angular/cdk/table';
@@ -42,6 +43,7 @@ import { BuscadorPeliculasComponent } from './pages/buscador-peliculas/buscador-
 import { PeliculaComponent } from './pages/pelicula/pelicula.component';
 import { ToolbarComponent } from './pages/toolbar/toolbar.component';
 import { TablaMensajesComponent } from './pages/tabla-mensajes/tabla-mensajes.component';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { TablaMensajesComponent } from './pages/tabla-mensajes/tabla-mensajes.co
     BuscadorPeliculasComponent,
     PeliculaComponent,
     ToolbarComponent,
-    TablaMensajesComponent
+    TablaMensajesComponent,
+    CalendarioComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +84,8 @@ import { TablaMensajesComponent } from './pages/tabla-mensajes/tabla-mensajes.co
     MatListModule,
     MatPaginatorModule,
     MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AngularFireModule,
     MatSidenavModule,
     CdkTableModule,

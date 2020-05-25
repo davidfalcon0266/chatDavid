@@ -31,8 +31,11 @@
 
                         <mat-form-field class="example-full-width">
                             <mat-label class="text-dark">Password</mat-label>
-                            <input matInput id="pws" class="text-dark f-w" name="pws" type="password"
+                            <input matInput id="pws" class="text-dark f-w" name="pws" [type]="hide ? 'password' : 'text'"
                                 formControlName="pws" required>
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
                             <mat-error
                                 *ngIf="formG.controls?.pws?.errors && formG.controls?.pws?.errors.required && (formG.controls?.pws?.dirty || formG.controls?.pws?.touched)">
                                 Campo Requerido</mat-error>

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   formG: FormGroup;
   usuario: Usuario = new Usuario('', '', '');
   loading = false;
+  hide = true;
 
   constructor(public formB: FormBuilder,
               public auth: AuthService,
