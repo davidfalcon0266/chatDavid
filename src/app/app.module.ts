@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {MatToolbarModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatDialogModule,
   MatSelectModule, MatSidenavModule, MatListModule, MatPaginatorModule, MatTableModule, MatSnackBarModule,
-  MatDatepickerModule, MatNativeDateModule
+  MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule
 } from '@angular/material';
 
 import {CdkTableModule} from '@angular/cdk/table';
@@ -44,6 +44,7 @@ import { PeliculaComponent } from './pages/pelicula/pelicula.component';
 import { ToolbarComponent } from './pages/toolbar/toolbar.component';
 import { TablaMensajesComponent } from './pages/tabla-mensajes/tabla-mensajes.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
+import { ConfirmaReservaComponent } from './pages/confirma-reserva/confirma-reserva.component';
 
 @NgModule({
   declarations: [
@@ -65,8 +66,10 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
     PeliculaComponent,
     ToolbarComponent,
     TablaMensajesComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    ConfirmaReservaComponent
   ],
+  entryComponents: [ConfirmaReservaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -86,6 +89,7 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatAutocompleteModule,
     AngularFireModule,
     MatSidenavModule,
     CdkTableModule,

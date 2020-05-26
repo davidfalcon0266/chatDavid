@@ -1,0 +1,20 @@
+
+
+
+<div class="container">
+    
+        <h5 class="text-prmary text-center">{{reserva.name | uppercase}} por favor confirma los datos de tu reserva</h5>
+        <div >
+            <span class="text-primary">Nombre:</span>  {{ reserva?.name}} <br>
+            <span class="text-primary">Telefono:</span> {{reserva?.telefono}} <br>
+            <span class="text-primary">Dirección:</span> {{reserva?.comuna}} - {{reserva?.direccion}} <br>
+            <span class="text-primary">Fecha:</span> {{reserva?.fecha | date}} <br>
+            <span class="text-primary">Hora:</span> {{reserva?.hora}} <br>
+            <span class="text-primary">Motivo:</span> {{reserva?.motivo}} <br>
+        </div>
+
+        <div class="mt-2" align="center">
+            <button class="btn btn-outline-primary" (click)="onOkClick()">Confirmar</button>
+        </div>
+    </div>
+

@@ -1,4 +1,4 @@
-<div class="container" align="center">
+<div class="container">
     <div class="jumbotron">
         <h1 class="display-4">Hola Bienvenido</h1>
         <p class="lead">Aqui podras seleccionar Fecha, hora y motivo de tu agenda.!</p>
@@ -8,53 +8,128 @@
         <a *ngIf="comenzar" (click)="comenzar = !comenzar" class="btn btn-outline-primary btn-lg text-dark"
             role="button">Cerrar</a>
     </div>
-    <form [formGroup]="formG">
-        <div *ngIf="comenzar">
-            <mat-form-field>
-                <mat-label>Selecciona tu Region</mat-label>
-                <mat-select formControlName="region" name="region">
-                    <mat-option *ngFor="let region of regiones" [value]="region.value">
-                        {{region.region}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <mat-label>Selecciona tu comuna</mat-label>
-                <mat-select formControlName="region" name="region">
-                    <mat-option *ngFor="let comuna of comunas" [value]="comuna.value">
-                        {{comuna.region}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field color="primary">
-                <input formControlName="fecha" matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" required>
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2 color="primary"></mat-datepicker>
-            </mat-form-field> <br>
 
-            <mat-form-field *ngIf="!formG.controls?.fecha?.errors?.required">
-                <mat-label>Horas disponibles</mat-label>
-                <mat-select formControlName="hora" name="hora">
-                    <mat-option *ngFor="let hora of horaSeleccion" [value]="hora">
-                        {{hora}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field *ngIf="!formG.controls?.fecha?.errors?.required && !formG.controls?.hora?.errors?.required">
-                <mat-label>Motivo</mat-label>
-                <mat-select formControlName="motivo" name="motivo">
-                    <mat-option *ngFor="let motivo of motivos" [value]="motivo">
-                        {{motivo}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <button [disabled]="!formG.valid" class="btn btn-outline-primary" (click)="fechaa()"> Agendar</button>
+
+    <div *ngIf="comenzar">
+        <div class="row">
+            <div class="col-6">
+                <div class="img"></div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12">
+                <div class="justify-content-center" align="center">
+                    <form [formGroup]="formG">
+
+                        <mat-form-field class="w-100">
+                            <mat-label class="text-dark">Nombre</mat-label>
+                            <input matInput id="name" class="text-dark f-w" name="name" formControlName="name" required
+                                pattern="[a-zA-Z ]*" appOnlyChar onpaste="return" false>
+                            <mat-icon class="text-primary" color="primary" matSuffix>perm_identity</mat-icon>
+                            <mat-error
+                                *ngIf="formG.controls.name.errors && formG.controls.name.errors.required && (formG.controls.name.dirty || formG.controls.name.touched)">
+                                Campo Requerido</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls.name.errors && formG.controls.name.errors.pattern && (formG.controls.name.dirty || formG.controls.name.touched)">
+                                No se permiten Numeros</mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="w-100" *ngIf="!formG.controls?.name?.errors?.required">
+                            <mat-label>Telefono</mat-label>
+                            <span matPrefix>+56 &nbsp;</span>
+                            <input type="tel" matInput name="telefono" formControlName="telefono" pattern="[0-9]*"
+                                appOnlyChar onpaste="return" false required>
+
+                            <mat-icon class="text-primary" color="primary" matSuffix>phone_iphone</mat-icon>
+                            <mat-error
+                                *ngIf="formG.controls?.telefono?.errors && formG.controls?.telefono?.errors.required && (formG.controls?.telefono?.dirty || formG.controls?.telefono?.touched)">
+                                Campo Requerido</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls.telefono.errors && formG.controls?.telefono?.errors.pattern && (formG.controls?.telefono?.dirty || formG.controls?.telefono?.touched)">
+                                No se permiten Letras</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls?.telefono?.errors && formG.controls?.telefono?.errors.minlength && (formG.controls?.telefono?.dirty || formG.controls?.telefono?.touched)">
+                                Debes ingresar un num válido</mat-error>
+                            <mat-error
+                                *ngIf="formG.controls?.telefono?.errors && formG.controls?.telefono?.errors.maxlength && (formG.controls?.telefono?.dirty || formG.controls?.telefono?.touched)">
+                                Debes ingresar un num válido</mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="w-100"
+                            *ngIf="!formG.controls?.name?.errors?.required && !formG.controls?.telefono?.errors?.required">
+                            <mat-label>Selecciona tu Region</mat-label>
+                            <mat-icon class="text-primary" color="primary" matSuffix>edit_location</mat-icon>
+                            <select matNativeControl formControlName="region" name="region"
+                                (change)="onChange($event.target.value)" required>
+
+                                <option class="m-2 p-3" *ngFor="let region of regiones" [value]="region.value">
+                                    {{region.region}}
+                                </option>
+
+                            </select>
+
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="w-100"
+                            *ngIf="!formG.controls?.name?.errors?.required && !formG.controls?.telefono?.errors?.required && !formG.controls?.region?.errors?.required">
+                            <mat-label>Selecciona tu comuna</mat-label>
+                            <mat-icon class="text-primary" color="primary" matSuffix>edit_location</mat-icon>
+                            <mat-select formControlName="comuna" name="comuna" required>
+                                <mat-option *ngFor="let comuna of comunas" [value]="comuna">
+                                    {{comuna}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="w-100"
+                            *ngIf="!formG.controls?.name?.errors?.required && !formG.controls?.telefono?.errors?.required && !formG.controls?.region?.errors?.required && !formG.controls?.comuna?.errors?.required">
+                            <mat-label>Dirección</mat-label>
+                            <input matInput placeholder="Dirección" formControlName="direccion" name="direccion"
+                                required>
+                            <mat-icon class="text-primary" color="primary" matSuffix>edit_location</mat-icon>
+                            <mat-error
+                                *ngIf="formG.controls.direccion.errors && formG.controls.direccion.errors.required && (formG.controls.direccion.dirty || formG.controls.direccion.touched)">
+                                Campo Requerido</mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="w-100" color="primary"
+                            *ngIf="!formG.controls?.name?.errors?.required && !formG.controls?.telefono?.errors?.required && !formG.controls?.region?.errors?.required && !formG.controls?.comuna?.errors?.required && !formG.controls?.direccion?.errors?.required">
+                            <input formControlName="fecha" matInput [matDatepicker]="picker2" [min]="minDate"
+                                [max]="maxDate" required>
+                            <mat-datepicker-toggle class="text-primary" color="primary" matSuffix [for]="picker2">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker class="text-primary" #picker2>
+
+                            </mat-datepicker>
+
+                        </mat-form-field> <br>
+
+                        <mat-form-field class="w-100"
+                            *ngIf="!formG.controls?.name?.errors?.required && !formG.controls?.telefono?.errors?.required && !formG.controls?.region?.errors?.required && !formG.controls?.comuna?.errors?.required && !formG.controls?.fecha?.errors?.required">
+                            <mat-label>Horas disponibles</mat-label>
+                            <mat-icon class="text-primary" color="primary" matSuffix>timer</mat-icon>
+                            <mat-select formControlName="hora" name="hora">
+                                <mat-option *ngFor="let hora of horaSeleccion" [value]="hora">
+                                    {{hora}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="w-100"
+                            *ngIf="!formG.controls?.name?.errors?.required && !formG.controls?.telefono?.errors?.required && !formG.controls?.region?.errors?.required && !formG.controls?.comuna?.errors?.required && !formG.controls?.fecha?.errors?.required && !formG.controls?.hora?.errors?.required">
+                            <mat-label>Motivo</mat-label>
+                            <mat-icon class="text-primary" color="primary" matSuffix>sync_problem</mat-icon>
+                            <mat-select formControlName="motivo" name="motivo">
+                                <mat-option *ngFor="let motivo of motivos" [value]="motivo">
+                                    {{motivo}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <br>
+                        <button (click)="confirmarReserva()" *ngIf="formG.valid" [disabled]="" class="btn btn-outline-primary" (click)="fechaa()">
+                            Agendar</button>
+
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
-
-
-</div>
+    </div>
