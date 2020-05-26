@@ -1,0 +1,63 @@
+[
+  {
+    "regiones": [
+      {
+        "value": "1",
+        "region": "Metropolitana de Santiago"
+      },
+      {
+        "value": "2",
+        "region": "Valparaiso"
+      }
+    ],
+    "comunas": [
+      {
+        "metropolitana": [
+          "Santiago centro",
+          "Cerrillos",
+          "Cerro Navia",
+          "Conchalí",
+          "El Bosque",
+          "Estación Central",
+          "Huechuraba",
+          "Independencia",
+          "La Cisterna",
+          "La Florida",
+          "La Granja",
+          "La Pintana",
+          "La Reina",
+          "Las Condes",
+          "Lo Barnechea",
+          " Lo Espejo",
+          " Lo Prado",
+          "Macul",
+          "Maipú",
+          " Ñuñoa",
+          "Pedro Aguirre Cerda",
+          "Peñalolén",
+          "Providencia",
+          "Pudahuel",
+          "Quilicura",
+          "Quinta Normal",
+          " Recoleta",
+          "Renca",
+          "San Joaquín",
+          "San Miguel",
+          "San Ramón",
+          "Vitacura"
+        ]
+      },
+      {
+        "valparaiso": [
+          "Valparaíso",
+          "Casablanca",
+          "Concón",
+          "Juan Fernández",
+          "Puchuncaví",
+          "Quintero",
+          "Viña del Mar"
+        ]
+      }
+    ]
+  }
+]
